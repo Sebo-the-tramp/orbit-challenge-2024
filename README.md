@@ -14,11 +14,7 @@ pip install -r requirements.txt
 ```
 
 error with SLURM:
-```
-export SLURM_NTASKS=1
-```
-
-ADD this variables to .bashrc or just run in the command line
+ADD these variables to .bashrc or just run in the command line
 ```
 # Variables
 export PROJECT_ROOT=./
