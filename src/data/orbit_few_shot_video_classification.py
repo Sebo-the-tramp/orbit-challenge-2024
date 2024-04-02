@@ -430,6 +430,7 @@ class UserCentricFewShotVideoClassificationDataset(torch.utils.data.Dataset):
         multi_clips_annotations = []
         clip_sampler = self.support_video_clip_sampler if subset == "support" else self.query_video_clip_sampler
         for filename, label, annotation_filename in zip(video_filenames, labels, annotation_filenames):
+            # BOTTLENECK: The following code is not efficient, need to refactor in the future
             # 1. Prepare clips: Sample clips from one video sequence
             video = FrameVideo(video_folder_path=filename,
                                num_threads=self.num_threads,

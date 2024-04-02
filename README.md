@@ -56,6 +56,9 @@ Then you need to install for training a pretrained model of efficientnet (becaus
 ```
 wget https://github.com/lukemelas/EfficientNet-PyTorch/releases/download/1.0/efficientnet-b0-355c32eb.pth
 ```
+
+I'll keep the weights for phinet and mobilevit in this repository under pretrained folder
+
 and put it in the correct folder 
 
 Very useful:

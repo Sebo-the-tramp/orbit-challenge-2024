@@ -124,6 +124,11 @@ class MaxMultiClipSampler(FixedMultiClipSampler):
     """
         For each video sequence, we select all clip candidates. It is used in sampling the query video sequences
         during testing, because all frames of one video must be evaluated.
+        # TODO: I guess we can filter out the frame that do not contain the objects is it? -> YES IT IS A MUST!
+        # TODO: Only 200 randomly sampled FRAMES needs to be returned.
+        # TODO: If after filtering, a clutter video has less than 50 valid frames, the video should be excluded from the evaluation. If it has 50-200 valid frames then all these frames should be included.
+        # TO KNOW: The above should be repeated for each clutter video in the task's query set, resulting in N frame accurary scores where N is the number of clutter videos belonging to the user
+        (https://github.com/Sebo-the-tramp/ORBIT-Dataset)
     """
     def _sample_clips(self, non_overlapping_clips_candidates: List):
         num_sampled_clips = len(non_overlapping_clips_candidates)

@@ -25,8 +25,13 @@
 import glob
 import pandas as pd
 
+try:
+    import fastparquet
+except ImportError:
+    print("I am saving you time, instead of waiting for the error at the end, install pyarrow -> pip install fastparquet")
+
 def get_dataframefiles(json_files):
-    return [pd.read_json(file).transpose() for file in json_files]
+    return [pd.read_json(file).astype(bool).transpose() for file in json_files]
 
 
 # read all files in fast way
