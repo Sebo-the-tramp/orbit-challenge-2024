@@ -24,11 +24,11 @@ class ProtoNetWithLITE(pl.LightningModule):
     """
     def __init__(self,
                  pretrained_backbone_checkpoint_path: str,
-                 backbone_network: str = "efficientnetb0",
+                 backbone_network: str = "mobilevit",
                  unfreeze_backbone: bool = True,
                  freeze_BN_layer: bool = True,
                  normalization_layer: str = "basic",
-                 use_adapt_features: bool = False,
+                 use_adapt_features: bool = True,
                  feature_adaptation_method: str = "generate",
                  classifier: str = "proto",
                  video_clip_length: int = 8,
@@ -263,13 +263,17 @@ class ProtoNetWithLITE(pl.LightningModule):
         compute_average_frame_accuracy_across_videos(self.episode_evaluator.save_dir)
 
     def configure_optimizers(self):
+        # breakpoint()
         feature_extractor_params = list(map(id, self.model.feature_extractor.parameters()))
+        # feature_extractor_params = list(map(id, self.model.feature_extractor))
+        # breakpoint()
         base_params = filter(lambda p: id(p) not in feature_extractor_params, self.model.parameters())
         # optimizer_fn = optimizers[optimizer_type]
         extractor_scale_factor = 0.1 if self.pretrained_backbone_checkpoint_path else 1.0
         optimizer = torch.optim.Adam([
             {'params': base_params},
             {'params': self.model.feature_extractor.parameters(), 'lr': self.lr * extractor_scale_factor}
+            #  {'params': self.model.feature_extractor, 'lr': self.lr * extractor_scale_factor}
         ], lr=self.lr)
         print("initial learning rate = {}".format(self.lr))
 

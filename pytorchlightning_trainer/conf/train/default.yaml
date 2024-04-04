@@ -26,7 +26,7 @@ monitor_metric_mode: 'max'
 #  verbose: False
 
 
-#load_pretrained: "/home/ligu/projects/fsl_npt/logs/tb_logs/masked_protonet/mini_imagenet_ordered_0.9/version_0/checkpoints/epoch=0-step=7999.ckpt"
+# load_pretrained: "/home/zhumakhanova/Desktop/cv703_project/orbit-challenge-2024/.cache/2024-03-23/18-29-33/logs/tb_logs/reproduce_our_best_model_training_with_data_augment/version_0/checkpoints/epoch=1-step=274.ckpt"
 
 model_checkpoints:
   save_top_k: 5

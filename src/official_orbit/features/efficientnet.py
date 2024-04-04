@@ -472,8 +472,9 @@ def efficientnetb0(pretrained=False, pretrained_model_path=None, batch_norm='bas
         model = FilmEfficientNet(blocks_args, global_params)
     else:
         model = EfficientNet(blocks_args, global_params)
+    
     model._change_in_channels(in_channels=3)
-
+    breakpoint()
     if pretrained:
         load_pretrained_weights(model, model_type, weights_path=pretrained_model_path, load_fc=False)
         model._change_in_channels(in_channels=3)

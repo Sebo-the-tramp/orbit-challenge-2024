@@ -69,17 +69,21 @@ class FewShotRecogniser(nn.Module):
 
         # configure feature extractor
         extractor_fn = extractors[feature_extractor]
+
         self.feature_extractor = extractor_fn(
-            pretrained=True if pretrained_extractor_path else False,
+            pretrained=False,
+            # pretrained=True if pretrained_extractor_path else False,
             pretrained_model_path=pretrained_extractor_path,
             batch_norm=self.batch_normalisation,
             with_film=self.adapt_features
         )
+        # breakpoint()
         if not self.learn_extractor:
             self._freeze_extractor()
 
         # configure feature adapter
         if self.adapt_features:
+            # breakpoint()
             if self.feature_adaptation_method == 'generate':
                 self.set_encoder = SetEncoder(self.batch_normalisation)
                 adaptation_layer = self.feature_extractor._get_adaptation_layer(generatable=True)
@@ -173,6 +177,8 @@ class FewShotRecogniser(nn.Module):
                 batch_clips = batch_clips.cuda(1)
                 batch_features = self.feature_extractor(batch_clips, feature_adapter_params).cuda(0)
             else:
+                # breakpoint()
+                print( batch_clips.shape)
                 batch_features = self.feature_extractor(batch_clips, feature_adapter_params)
 
             if ops_counter:
