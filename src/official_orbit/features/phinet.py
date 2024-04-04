@@ -1,15 +1,9 @@
 import torch
 import torch.nn as nn
-from prepare_data import create_loaders, setup_mixup
-from timm.loss import (
-    BinaryCrossEntropy,
-    LabelSmoothingCrossEntropy,
-    SoftTargetCrossEntropy,
-)
 
 import micromind as mm
 from micromind.networks import PhiNet, XiNet
-from micromind.utils import parse_configuration
+
 import sys
 
 VALID_MODELS = (
