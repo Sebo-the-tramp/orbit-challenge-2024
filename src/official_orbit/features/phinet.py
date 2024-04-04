@@ -158,8 +158,8 @@ def phinet(pretrained=False, pretrained_model_path=None, batch_norm='basic', wit
         downsampling_layers=[5,7],
         return_layers=None,
         # classification-specific
-        include_top=False,
-        num_classes=0,
+        include_top=True,
+        num_classes=100,
     )     
 
     if pretrained:        
