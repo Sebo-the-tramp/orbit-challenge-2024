@@ -147,7 +147,7 @@ def phinet(pretrained=False, pretrained_model_path=None, batch_norm='basic', wit
 
     modules = torch.nn.ModuleDict({})  # init empty modules dict
 
-    modules['classifier'] = PhiNet(
+    modules['feature_extractor'] = PhiNet(
         input_shape=(3,224,224),
         alpha=2.3,
         num_layers=7,
@@ -165,7 +165,7 @@ def phinet(pretrained=False, pretrained_model_path=None, batch_norm='basic', wit
     if pretrained:        
         
         # Taking away the classifier from pretrained model
-        pretrained_dict = torch.load('../../../pretrained/phinet/state_dict.pth.tar', map_location='cuda:0')
+        pretrained_dict = torch.load('../../../pretrained/phinet/state_dict.pth.tar')
         model_dict = {}
         for k, v in pretrained_dict.items():
             if "classifier" not in k:
