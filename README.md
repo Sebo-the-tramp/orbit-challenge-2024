@@ -3,9 +3,9 @@ https://app.codesee.io/maps/e6cb4840-c951-11ee-b402-6d85204823e2
 
 trying to run baseline 2022
 
-create environment with python3.8
+create an environment with python3.8
 ```
-conda create -n flash python=3.8
+conda create -n orbit python=3.8
 ```
 
 run pip install
