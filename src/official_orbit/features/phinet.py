@@ -50,7 +50,7 @@ def phinet(pretrained=False, pretrained_model_path=None, batch_norm='basic', wit
     if pretrained:        
         
         # Taking away the classifier from pretrained model
-        pretrained_dict = torch.load('./pretrained/phinet/state_dict.pth.tar', map_location='cuda:0')
+        pretrained_dict = torch.load('../../../pretrained/phinet/state_dict.pth.tar', map_location='cuda:0')
         model_dict = {}
         for k, v in pretrained_dict.items():
             if "classifier" not in k:
