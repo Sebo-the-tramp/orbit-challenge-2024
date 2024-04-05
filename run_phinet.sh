@@ -1,1 +1,1 @@
-python run.py data=default model=feat_with_lite_phinet train=with_lite_train train.exp_name="first_phinet"
+python run.py data=default_use_data_aug model=feat_with_lite_phinet train=with_lite_test train.exp_name="first_phinet"

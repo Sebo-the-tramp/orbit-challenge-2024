@@ -11,10 +11,10 @@ skip_training: True # test mode
 pl_trainer:
   fast_dev_run: False # Enable this for debug purposes
   gpus: 1
-  precision: 32
+  precision: 16
   num_sanity_val_steps: 0
 
-load_pretrained: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/ORBIT-2022-winner-method/pretrained/epoch=0-step=10999.ckpt"
+# load_pretrained: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/ORBIT-2022-winner-method/pretrained/epoch=0-step=10999.ckpt"
 # https://drive.google.com/file/d/1ptYa-Nv52GDSSH6-3JECZIPFdUG-hOWS/view?usp=sharing
 #load_pretrained: "your_project_folder/checkpoints/epoch=0-step=10999.ckpt"
 
