@@ -22,7 +22,7 @@ monitor_metric_mode: 'max'
 
 
 model_checkpoints:
-  save_top_k: 15
+  save_top_k: 2
   verbose: False
 
 TensorboardModelDistribution:

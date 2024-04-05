@@ -24,7 +24,7 @@ def create_symlinks(src_base, target_base, method, constraint):
 
 if __name__ == "__main__":
     src_base = Path("/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/orbit_benchmark_224")
-    target_base = Path("/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/orbit_dataset_224_better_smaller")
+    target_base = Path("/home/sebastian.cavada/Documents/scsv/semester2/CV703/orbit-challenge-2024/dataset/orbit_dataset_224_better_smaller")
 
     # Ensure the target base exists
     target_base.mkdir(parents=True, exist_ok=True)

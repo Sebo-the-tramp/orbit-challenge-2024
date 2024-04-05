@@ -40,7 +40,7 @@ class ORBITDataModule(LightningDataModule):
                 Default config file: pytorchlightning_trainer/conf/data/default.yaml
         """
         super().__init__()
-        self.save_hyperparameters(logger=False)
+        self.save_hyperparameters(logger=False)        
 
         self.root = root
         self.use_orbit_statistics = use_orbit_statistics

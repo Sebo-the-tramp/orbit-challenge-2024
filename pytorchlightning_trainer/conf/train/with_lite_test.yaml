@@ -3,7 +3,7 @@ deterministic: True
 random_seed: 42
 
 # training
-exp_name: "where_to_save_your_testing_results"
+exp_name: "testing_lol"
 
 skip_training: True # test mode
 
