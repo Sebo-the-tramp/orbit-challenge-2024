@@ -19,11 +19,18 @@ Also refactoring of the github repository. It needs to be cleaned.
 
 - Added IFresV4, the log for saving the images that are worth for the support vectors
 
-## Hackathon metamadness
+## Metamadness Hackathon 
 
 ### 05/04/2024 - 1st day hackathon
 
-We got some initial results:
+Finally we got some initial results:
+
+this is with FEAT and 50 episodes per users. 3% lower than the orbit-winner-baseline and it might due to some reasons:
+- less objects per user in the testing
+- different testing settings
+- different amount of episodes in training
+
+-> we are trying to bridge the gap!
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |
 |--------------------------|--------------------------|-----------------------|
