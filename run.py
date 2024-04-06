@@ -153,6 +153,8 @@ def run(cfg: DictConfig) -> None:
     )
     log_hyperparameters(trainer=trainer, model=model, cfg=cfg)
 
+    print("YESSS IA M ", cfg)
+
     if cfg.train.skip_training:
         hydra.utils.log.info(f"Skip training!")
         hydra.utils.log.info(f"Starting testing!")

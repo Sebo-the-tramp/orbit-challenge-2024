@@ -49,3 +49,13 @@ Today I am trying to see if the vit-small can be used
 Create a legit clean testing dataset
 - take away the filtering and background 
 - also tonight launch efficientnet 500 to see what's wrong in the baseline
+
+
+I found out out to make the test work by freeing the memory each time after each user, add:
+
+```python
+    # crazy thing
+    torch.cuda.empty_cache()
+```
+
+**you need to add this snippet just after ```model.reset()``` in the file protonet_video_post.py and protonet

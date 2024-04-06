@@ -49,7 +49,7 @@ datamodule:
     root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224"
     #root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_only_good/orbit_benchmark_224"
     object_sampler: "max"
-    max_num_objects_per_user: 5 # original 100
+    max_num_objects_per_user: 100 # original 100
     support_instance_sampler: "max"
     query_instance_sampler: "max"
     query_video_type: "clutter"
