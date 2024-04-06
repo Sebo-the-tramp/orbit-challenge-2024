@@ -1,1 +1,1 @@
-python run.py data=default_use_data_aug model=feat_with_lite train=with_lite_train train.exp_name="test_02"
+python run.py data=default_use_data_aug model=feat_with_lite_vit train=with_lite_train train.exp_name="vit_big_dataset_500"

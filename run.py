@@ -147,7 +147,7 @@ def run(cfg: DictConfig) -> None:
         val_check_interval=cfg.logging.val_check_interval,
         # progress_bar_refresh_rate=cfg.logging.progress_bar_refresh_rate,
         log_every_n_steps=cfg.logging.log_every_n_steps,
-        profiler="simple",
+        #profiler="simple",
         #profiler="advanced",
         **cfg.train.pl_trainer,
     )

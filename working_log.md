@@ -37,6 +37,15 @@ this is with FEAT and 50 episodes per users. 3% lower than the orbit-winner-base
 | EfficientNet - 50 episodes - big dataset (BASELINE)   | 0.6638479368843097       | ±0.05643283613519739   |
 | Phinet - 50 episodes - big dataset   | 0.6509896065430318      |  ±0.05423007214999352 |
 | Phinet - 50 episodes - better dataset (non-legit)  | 0.6803234484591006      |  ±0.05423007214999352 |
+| Vit_S - 50 episodes - big dataset | - crashes -     |  - crashes - |
+| Vit_S - 50 episodes - better dataset | - crashes -     |  - crashes - |
+
+**the crashes are due to the limited memory of the GPU**
 
 
 ### 06/04/2024 - 2nd day hackathon
+
+Today I am trying to see if the vit-small can be used
+Create a legit clean testing dataset
+- take away the filtering and background 
+- also tonight launch efficientnet 500 to see what's wrong in the baseline

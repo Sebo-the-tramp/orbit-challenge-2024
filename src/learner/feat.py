@@ -94,7 +94,7 @@ class FEAT(HeadClassifier):
 
     ## MODIFIED TEST
 
-    def __init__(self, hidden_dim=440, temperature=32):
+    def __init__(self, hidden_dim=384, temperature=32):
         super().__init__()
         self.hidden_dim = hidden_dim
         self.temperature = temperature
