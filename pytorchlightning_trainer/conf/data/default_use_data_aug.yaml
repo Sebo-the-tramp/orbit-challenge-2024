@@ -48,7 +48,7 @@ datamodule:
   test_cfg:
     root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_legit/orbit_benchmark_224"
     object_sampler: "max"
-    max_num_objects_per_user: 100
+    max_num_objects_per_user: 5
     support_instance_sampler: "max"
     query_instance_sampler: "max"
     query_video_type: "clutter"
