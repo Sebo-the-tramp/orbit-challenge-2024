@@ -1,2 +1,3 @@
 from .protonet import ProtoNetWithLITE
 from .protonet_video_post import ProtoNetWithLITEVideoPost
+from .protonet_video_post_improved import ProtoNetWithLITEVideoPostImproved

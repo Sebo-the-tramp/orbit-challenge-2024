@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import torch
+import gc
 from torch.nn import functional as F
 import pytorch_lightning as pl
 import torchmetrics
@@ -211,6 +212,8 @@ class ProtoNetWithLITE(pl.LightningModule):
 
     def on_test_start(self) -> None:
         # Hard code; To avoid direct modifications on official_orbit.models.few_shot_recognizers.py
+
+        print("ALSO HOOK IS WORKING")
         self.model._set_device(self.device)
         self.model.set_test_mode(True)
         self.episode_evaluator = EpisodeEvaluator(
@@ -230,17 +233,20 @@ class ProtoNetWithLITE(pl.LightningModule):
 
         # Register sampled support clips and their features for post-analysis (Optional)
         if self.register_testing_supports:
-            prototypes = self.model.classifier.param_dict['weight']  # Shape = [num_object_category, 1280]
+            prototypes = self.model.classifier.param_dict['weight']  # Shape = [num_object_category, 1280] -> the 1280 should depend hopefully
             if len(prototypes) != len(object_category_names):
                 raise ValueError("In the current episode, the number of prototypes "
                                  "is not equal to the number of object categories")
-            self.episode_evaluator.register_prototypes(prototypes.cpu().numpy())
-            self.episode_evaluator.add_multiple_clips_results(clips_features=self.model.context_features.cpu().numpy(),
+            self.episode_evaluator.register_prototypes(prototypes.detach().cpu().numpy())
+            self.episode_evaluator.add_multiple_clips_results(clips_features=self.model.context_features.detach().cpu().numpy(),
                                                               clips_filenames=support_clips_filenames,
-                                                              clips_labels=support_clips_labels.cpu().numpy())
+                                                              clips_labels=support_clips_labels.detach().cpu().numpy())
 
         for video_sequence_frames, video_sequence_label, video_frame_filenames in \
                 zip(val_batch['query_frames'], val_batch['query_labels'], val_batch['query_frame_filenames']):
+            
+            # print("yess here going crazy")
+
             video_clips_frames = attach_frame_history(video_sequence_frames, self.video_clip_length)
             video_logits, video_features = self.model.predict(video_clips_frames)  # Shape = [num_frames, num_classes]
             video_prediction_scores = F.softmax(video_logits, dim=-1)
@@ -248,20 +254,37 @@ class ProtoNetWithLITE(pl.LightningModule):
             num_frames = video_logits.shape[0]
             video_labels = video_sequence_label.expand(num_frames).to(device=video_logits.device)
             acc = torchmetrics.functional.accuracy(video_predictions, video_labels)
-            self.episode_evaluator.add_video_result(per_frame_prediction_scores=video_prediction_scores.cpu().numpy(),
-                                                    per_frame_features=video_features.cpu().numpy(),
+            self.episode_evaluator.add_video_result(per_frame_prediction_scores=video_prediction_scores.detach().cpu().numpy(),
+                                                    per_frame_features=video_features.detach().cpu().numpy(),
                                                     frame_filenames=video_frame_filenames,
                                                     video_gt_label=video_sequence_label.item(),
-                                                    video_frame_accuracy=acc.item())
+                                                    video_frame_accuracy=acc.item())            
+        ## this is for each user I guess        
         self.model._reset()
+
+        print(" end", torch.cuda.memory_summary())        
 
         self.episode_evaluator.compute_statistics()
         self.episode_evaluator.save_to_disk()
         self.episode_evaluator.reset()
 
+        # Example of deleting specific tensors
+        del video_clips_frames, video_logits, video_features, video_predictions, video_prediction_scores, video_labels
+        del support_clips_frames, support_clips_labels, support_clips_filenames, num_valid_support_clips
+        del prototypes, num_total_support_clips, object_category_names
+        del val_batch
+        gc.collect()  # Force the garbage collector to run
+        torch.cuda.empty_cache()  # Clear cache after deleting
+
+        print(torch.cuda.memory_summary(device=None, abbreviated=False))
+
     def on_test_end(self) -> None:
         convert_results_in_submission_format(self.episode_evaluator.save_dir)
         compute_average_frame_accuracy_across_videos(self.episode_evaluator.save_dir)
+
+    def test(self) -> None:
+
+        print("HEYYY it's working!!!!")
 
     def configure_optimizers(self):
         feature_extractor_params = list(map(id, self.model.feature_extractor.parameters()))

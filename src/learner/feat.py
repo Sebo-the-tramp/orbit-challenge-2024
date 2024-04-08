@@ -91,7 +91,9 @@ class FEAT(HeadClassifier):
         <https://openaccess.thecvf.com/content_CVPR_2020/papers/Ye_Few-Shot_Learning_via_Embedding_Adaptation_With_Set-to-Set_Functions_CVPR_2020_paper.pdf>
 
     """
-    def __init__(self, hidden_dim=1000, temperature=32):
+    ## MODIFIED TEST
+
+    def __init__(self, hidden_dim=1280, temperature=32):
         super().__init__()
         self.hidden_dim = hidden_dim
         self.temperature = temperature

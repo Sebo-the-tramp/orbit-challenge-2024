@@ -3,9 +3,9 @@ https://app.codesee.io/maps/e6cb4840-c951-11ee-b402-6d85204823e2
 
 trying to run baseline 2022
 
-create environment with python3.8
+create an environment with python3.8
 ```
-conda create -n flash python=3.8
+conda create -n orbit python=3.8
 ```
 
 run pip install
@@ -56,6 +56,9 @@ Then you need to install for training a pretrained model of efficientnet (becaus
 ```
 wget https://github.com/lukemelas/EfficientNet-PyTorch/releases/download/1.0/efficientnet-b0-355c32eb.pth
 ```
+
+I'll keep the weights for phinet and mobilevit in this repository under pretrained folder
+
 and put it in the correct folder 
 
 Very useful:

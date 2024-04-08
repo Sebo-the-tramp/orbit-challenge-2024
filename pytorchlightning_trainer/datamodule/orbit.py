@@ -26,7 +26,7 @@ def custom_collate_fn(batch):
 
 class ORBITDataModule(LightningDataModule):
     def __init__(self,
-                 root: str = "/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/orbit_benchmark_224",
+                 root: str = "/home/zhumakhanova/Desktop/cv703_project/orbit-challenge-2024/datasets/orbit_benchmark_224",
                  use_orbit_statistics: bool = False,
                  train_cfg: DictConfig = None,
                  val_cfg: DictConfig = None,
@@ -40,7 +40,7 @@ class ORBITDataModule(LightningDataModule):
                 Default config file: pytorchlightning_trainer/conf/data/default.yaml
         """
         super().__init__()
-        self.save_hyperparameters(logger=False)
+        self.save_hyperparameters(logger=False)        
 
         self.root = root
         self.use_orbit_statistics = use_orbit_statistics

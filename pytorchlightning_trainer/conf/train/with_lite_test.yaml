@@ -3,7 +3,7 @@ deterministic: True
 random_seed: 42
 
 # training
-exp_name: "where_to_save_your_testing_results"
+exp_name: "testing_lol"
 
 skip_training: True # test mode
 
@@ -11,10 +11,10 @@ skip_training: True # test mode
 pl_trainer:
   fast_dev_run: False # Enable this for debug purposes
   gpus: 1
-  precision: 32
+  precision: 16
   num_sanity_val_steps: 0
 
-load_pretrained: ""
+load_pretrained: "/home/zhumakhanova/Desktop/cv703_project/orbit-challenge-2024/.cache/2024-04-07/11-32-58/pretrained/orbit/epoch=1-step=260.ckpt"
 # https://drive.google.com/file/d/1ptYa-Nv52GDSSH6-3JECZIPFdUG-hOWS/view?usp=sharing
 #load_pretrained: "your_project_folder/checkpoints/epoch=0-step=10999.ckpt"
 

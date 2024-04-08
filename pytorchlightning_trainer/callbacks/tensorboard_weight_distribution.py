@@ -44,6 +44,7 @@ class TensorboardModelDistribution(Callback):
                 if p.nelement() == 0:
                     continue
                 if p.requires_grad:
-                    trainer.logger.experiment.add_histogram("weight_" + name, p.data, trainer.global_step)
+                    pass
+                    #trainer.logger.experiment.add_histogram("weight_" + name, p.data, trainer.global_step)
         else:
             raise NotImplementedError

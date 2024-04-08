@@ -61,3 +61,10 @@ docs/_build/
 /statistics
 /logs
 /checkpoints
+# dataset
+
+/dataset/orbit_benchmark*
+
+# specific
+/dataset/good_ones.txt
+/dataset/good_ones_legit.txt

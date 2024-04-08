@@ -250,6 +250,9 @@ class EfficientNet(nn.Module):
                 # image_size = calculate_output_image_size(image_size, block_args.stride)  # stride = 1
 
         # Head
+
+        ## modified
+
         in_channels = block_args.output_filters  # output of final block
         out_channels = round_filters(1280, self._global_params)
         Conv2d = get_same_padding_conv2d(image_size=image_size)

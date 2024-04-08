@@ -58,9 +58,14 @@ def get_object_category_names_according_labels(videos_filenames, labels):
     mapping = {}
     for video_frame_filenames, label in zip(videos_filenames, labels):
         # object_name = filename[0].split("/")[-1].split("--")[1]
-        object_name = video_frame_filenames[0].split("/")[6]
+
+        ## NOTE hardcoded
+
+        # print(video_frame_filenames[0].split("/")[10])
+        object_name = video_frame_filenames[0].split("/")[10]
         if int(label) not in mapping:
             mapping[int(label)] = object_name
+                        
     mapping = {k: v for k, v in sorted(mapping.items(), key=lambda item: item[0])}
 
     def clean_object_category_names(object_list):
@@ -140,7 +145,7 @@ def prepare_ORBIT_dataset(root_data_path: str,
                     video_frame_folder_fullpath = os.path.join(data_path, user_name, object_name, video_type,
                                                                video_name)
 
-                    # print(video_name_to_cluster_label['payload'])
+                    # print(video_name_to_cluster_label)
                     # print(video_name)
                     # print(os.path.join(data_path, user_name, object_name, video_type, video_name))
 
@@ -155,10 +160,23 @@ def prepare_ORBIT_dataset(root_data_path: str,
                                           os.path.join(root_data_path, "annotation", "orbit_extra_annotations",
                                                        mode, video_name + ".json")
                                       }
+
+                    # video_metadata might become part of the beton file?
+                    
+                    
                     video_database[user_name][object_name][video_type].append(video_metadata)
                     cnt_video += 1
+
+                    # except Exception:
+                    #     print(video_name_to_cluster_label)
+                    #     print(video_name)
+                    #     print(os.path.join(data_path, user_name, object_name, video_type, video_name))
+
     logger.info("Total number of video instances = {} in mode {}".format(cnt_video, mode))
     logger.info("Done.")
+
+    ## so here a video database is created, I could actually make it in the .parquet file following the same annotation, only thing I need
+    ## to add is the category label and category cluster label. the second should be already there, the first I need to understand how to get it.
     return video_database
 
 
@@ -187,6 +205,7 @@ class ORBITDatasetVideoInstanceSampler:
     def __call__(self, category_name_to_instances: Dict[str, List]) -> Tuple[List, List]:
 
         if "clean" not in category_name_to_instances.keys():
+            print(category_name_to_instances)
             raise ValueError("There is no clean video instance")
         if "clutter" not in category_name_to_instances.keys():
             print(category_name_to_instances)
@@ -213,6 +232,11 @@ class ORBITDatasetVideoInstanceSampler:
         return support_video_instances, query_video_instances
 
     def _sample_instance_from_only_clean_video_type(self, clean_video_instances: List[Dict]):
+
+        # Why would we ever enter here?
+
+        logger.warning("Yes we entered here, but I don't know why then.")
+
         total_num_clean_instance = len(clean_video_instances)
         num_support_video_instances = min(self.MIN_NUM_SUPPORT_INSTANCE,
                                           total_num_clean_instance - self.MIN_NUM_QUERY_INSTANCE)
@@ -280,7 +304,7 @@ class UserCentricFewShotVideoClassificationDataset(torch.utils.data.Dataset):
         logger.info(
             '{} users in total, and each user has {} episodes.'.format(num_users, self.num_episode_per_user))
 
-        logger.info("Start randomly generate episodes in {}set".format(self.mode))
+        logger.info("Start randomly generate episodes in {} set".format(self.mode))
         self.episodes = []
         for user_name in tqdm(user_names):
             category_names = list(video_database[user_name].keys())
@@ -312,7 +336,7 @@ class UserCentricFewShotVideoClassificationDataset(torch.utils.data.Dataset):
                     {
                         'support_frames': <torch.FloatTensor>,  # Shape: (N, T, C, H, W)
                         'support_labels': <torch.LongTensor>,   # Shape: (N, )
-                        'support_frame_filenames': <List[List[str]]>
+                        'support_frame_filenames': <List[List[str]]>  -> why do you need this?
                         'support_annotations': <List[List[Dict]]>
                         'query_frames': In train, <torch.FloatTensor>,  # Shape: (N, T, C, H, W)
                                         In test,  <List[torch.FloatTensor], # Shape: List[ (T, C, H, W)]
@@ -322,8 +346,11 @@ class UserCentricFewShotVideoClassificationDataset(torch.utils.data.Dataset):
                         'category_names': <List[str]>
                         "user_id": <str>
                       }
+
+                      The most sensible thing to do is to create the beton file that contains all this episodes stuff, if that works.
         """
         episode = self.episodes[item]
+
         # STEP 1: Sample multiple clips from each video
         support_frames, support_labels, support_frame_filenames, support_annotations = \
             self._prepare_clips_tensor(
@@ -339,7 +366,7 @@ class UserCentricFewShotVideoClassificationDataset(torch.utils.data.Dataset):
             subset="query")
 
         category_names = list(set([instance.category_name for instance in episode.support_set]))
-        user_names = [instance.user_name for instance in episode.support_set][0]
+        user_names = [instance.user_name for instance in episode.support_set][0] # ? why user_nameS ? shouldn't it only be one?
 
         # STEP 2: Shuffle sampled clips' indices
         support_frames, support_labels, support_frame_filenames, support_annotations = \
@@ -432,14 +459,15 @@ class UserCentricFewShotVideoClassificationDataset(torch.utils.data.Dataset):
         multi_clips_annotations = []
         clip_sampler = self.support_video_clip_sampler if subset == "support" else self.query_video_clip_sampler
         for filename, label, annotation_filename in zip(video_filenames, labels, annotation_filenames):
+            # BOTTLENECK: The following code is not efficient, need to refactor in the future
             # 1. Prepare clips: Sample clips from one video sequence
             video = FrameVideo(video_folder_path=filename,
                                num_threads=self.num_threads,
                                clip_length=clip_sampler.clip_length)
-            clip_info_list = clip_sampler(total_num_frame_video=video.total_num_frames)
-            frames_tensor, frame_filenames \
-                = video.get_multiple_clips(
-                clips_frame_indices_list=[clip_info.clip_frame_indices for clip_info in clip_info_list])
+            clip_info_list = clip_sampler(total_num_frame_video=video.total_num_frames) 
+            frames_tensor, frame_filenames = video.get_multiple_clips(
+                clips_frame_indices_list=[clip_info.clip_frame_indices for clip_info in clip_info_list]
+            )
             num_clips = frames_tensor.size(0)
             multi_clips_frame.append(frames_tensor)
             multi_clips_frame_filenames.append(frame_filenames)
@@ -621,6 +649,16 @@ def ORBITUserCentricVideoFewShotClassification(
                                                max_num_frame=max_num_sampled_frames_per_video,
                                                num_sampled_clips=max_num_clips_per_video,
                                                subsample_factor=video_subsample_factor)
+
+    if mode == "test":
+        print("EVVAIII") # should be correct
+        query_clip_sampler = make_clip_sampler(sampling_type="random_200",
+                                               clip_length=1, # ehhe hardcoded
+                                               max_num_frame=1000, # this must be equal
+                                               num_sampled_clips=1000, # this must be equal                                              
+                                               subsample_factor=video_subsample_factor
+                                               )    
+    
     else:
         query_clip_sampler = make_clip_sampler(sampling_type="max",
                                                clip_length=video_clip_length,

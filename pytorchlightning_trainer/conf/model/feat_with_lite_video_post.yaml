@@ -1,7 +1,7 @@
 _target_: pytorchlightning_trainer.module.ProtoNetWithLITEVideoPost
 
-pretrained_backbone_checkpoint_path: "/home/branislava.jankovic/Documents/object_detection/project/orbit-challenge-2024/features/efficientnet-b0-355c32eb.pth"
-backbone_network: "efficientnetb0"
+pretrained_backbone_checkpoint_path: "/home/zhumakhanova/Desktop/cv703_project/orbit-challenge-2024/pretrained/phinet/state_dict.pth_v2.tar"
+backbone_network: "phinet"
 unfreeze_backbone: True
 freeze_BN_layer: True
 normalization_layer: "basic"
