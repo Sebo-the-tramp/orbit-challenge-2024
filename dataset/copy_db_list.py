@@ -34,6 +34,6 @@ if __name__ == "__main__":
     
     image_list_path = sys.argv[1]    
     src_base = Path("/home/zhumakhanova/Desktop/cv703_project/")
-    target_base = Path("/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_only_good/")
+    target_base = Path("/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_only_good")
     
     create_symlinks(image_list_path, src_base, target_base)

@@ -89,7 +89,7 @@ class ProtoNetWithLITEVideoPost(ProtoNetWithLITE):
                                                     video_frame_accuracy=acc.item())
         self.model._reset()
 
-        print(" end", torch.cuda.memory_summary())        
+        print(" end", torch.cuda.memory_summary())
 
         self.episode_evaluator.compute_statistics()
         self.episode_evaluator.save_to_disk()

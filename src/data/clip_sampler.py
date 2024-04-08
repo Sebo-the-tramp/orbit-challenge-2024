@@ -120,6 +120,23 @@ class RandomMultiClipSampler(FixedMultiClipSampler):
         return sampled_clips
 
 
+class RandomMultiClipSampler200(FixedMultiClipSampler):
+    """
+        For each video sequence, we select 200 clips of size 1 from clip candidates. If there are less than 200 but more than 50 images load all of them.
+        If there are less than 50 ignore this object.
+    """
+    def _sample_clips(self, non_overlapping_clips_candidates: List):     
+        # if(len(non_overlapping_clips_candidates)<50):
+        #     return [] 
+        print("non overlapping clips candidates, ma da dove arrivano?",len(non_overlapping_clips_candidates))  
+        random_num_clips = min(len(non_overlapping_clips_candidates), 200)
+        sampled_clips = random.sample(non_overlapping_clips_candidates,
+                                      k=random_num_clips)
+        sampled_clips.sort(key=lambda x: x[0])
+        print(sampled_clips)
+        print(len(sampled_clips))
+        return sampled_clips
+
 class MaxMultiClipSampler(FixedMultiClipSampler):
     """
         For each video sequence, we select all clip candidates. It is used in sampling the query video sequences
@@ -201,5 +218,7 @@ def make_clip_sampler(sampling_type: str, **kwargs) -> ClipSampler:
         return UniformFixedNumberClipsMultiClipSampler(**kwargs)
     elif sampling_type == "uniform_fixed_chunk_size":
         return UniformFixedChunkSizeMultiClipSampler(**kwargs)
+    elif sampling_type == "random_200":        
+        return RandomMultiClipSampler200(**kwargs)
     else:
         raise NotImplementedError(f"{sampling_type} not supported")

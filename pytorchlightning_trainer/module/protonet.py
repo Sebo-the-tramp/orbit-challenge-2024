@@ -211,6 +211,8 @@ class ProtoNetWithLITE(pl.LightningModule):
 
     def on_test_start(self) -> None:
         # Hard code; To avoid direct modifications on official_orbit.models.few_shot_recognizers.py
+
+        print("ALSO HOOK IS WORKING")
         self.model._set_device(self.device)
         self.model.set_test_mode(True)
         self.episode_evaluator = EpisodeEvaluator(
@@ -234,11 +236,10 @@ class ProtoNetWithLITE(pl.LightningModule):
             if len(prototypes) != len(object_category_names):
                 raise ValueError("In the current episode, the number of prototypes "
                                  "is not equal to the number of object categories")
-            self.episode_evaluator.register_prototypes(prototypes.cpu().numpy())
-            self.episode_evaluator.add_multiple_clips_results(clips_features=self.model.context_features.cpu().numpy(),
+            self.episode_evaluator.register_prototypes(prototypes.detach().cpu().numpy())
+            self.episode_evaluator.add_multiple_clips_results(clips_features=self.model.context_features.detach().cpu().numpy(),
                                                               clips_filenames=support_clips_filenames,
-                                                              clips_labels=support_clips_labels.cpu().numpy())
-
+                                                              clips_labels=support_clips_labels.detach().cpu().numpy())
 
         for video_sequence_frames, video_sequence_label, video_frame_filenames in \
                 zip(val_batch['query_frames'], val_batch['query_labels'], val_batch['query_frame_filenames']):
@@ -252,19 +253,15 @@ class ProtoNetWithLITE(pl.LightningModule):
             num_frames = video_logits.shape[0]
             video_labels = video_sequence_label.expand(num_frames).to(device=video_logits.device)
             acc = torchmetrics.functional.accuracy(video_predictions, video_labels)
-            self.episode_evaluator.add_video_result(per_frame_prediction_scores=video_prediction_scores.cpu().numpy(),
-                                                    per_frame_features=video_features.cpu().numpy(),
+            self.episode_evaluator.add_video_result(per_frame_prediction_scores=video_prediction_scores.detach().cpu().numpy(),
+                                                    per_frame_features=video_features.detach().cpu().numpy(),
                                                     frame_filenames=video_frame_filenames,
                                                     video_gt_label=video_sequence_label.item(),
-                                                    video_frame_accuracy=acc.item())
-            
-        torch.cuda.memory_summary() 
-
+                                                    video_frame_accuracy=acc.item())            
         ## this is for each user I guess        
         self.model._reset()
-        
-        # crazy thing
-        torch.cuda.empty_cache()
+
+        print(" end", torch.cuda.memory_summary())        
 
         self.episode_evaluator.compute_statistics()
         self.episode_evaluator.save_to_disk()
@@ -283,6 +280,10 @@ class ProtoNetWithLITE(pl.LightningModule):
     def on_test_end(self) -> None:
         convert_results_in_submission_format(self.episode_evaluator.save_dir)
         compute_average_frame_accuracy_across_videos(self.episode_evaluator.save_dir)
+
+    def test(self) -> None:
+
+        print("HEYYY it's working!!!!")
 
     def configure_optimizers(self):
         feature_extractor_params = list(map(id, self.model.feature_extractor.parameters()))

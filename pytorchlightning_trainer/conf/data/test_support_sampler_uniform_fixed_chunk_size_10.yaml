@@ -5,7 +5,7 @@ datamodule:
   use_orbit_statistics: False
 
   train_cfg:
-    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_only_good/orbit_benchmark_224"
+    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_legit/orbit_benchmark_224"
     object_sampler: "random"
     max_num_objects_per_user: 15
     support_instance_sampler: "random"
@@ -26,7 +26,7 @@ datamodule:
     batch_size: 1
 
   val_cfg:
-    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_only_good/orbit_benchmark_224"
+    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_legit/orbit_benchmark_224"
     object_sampler: "max"
     max_num_objects_per_user: 100
     support_instance_sampler: "max"
@@ -45,7 +45,7 @@ datamodule:
     batch_size: 1
 
   test_cfg:
-    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_only_good/orbit_benchmark_224"
+    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_legit/orbit_benchmark_224"
     object_sampler: "max"
     max_num_objects_per_user: 100
     support_instance_sampler: "max"
@@ -56,9 +56,28 @@ datamodule:
     query_clip_sampler: "max"
     video_subsample_factor: 1
     num_episodes_per_user: 1
-    video_clip_length: 8
+    video_clip_length: 1
     max_num_clips_per_video: 10
     use_object_cluster_labels: False
-    num_threads: 4
+    num_threads: 16
     num_workers: 0
     batch_size: 1
+
+  # test_cfg:
+  #   root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_legit/orbit_benchmark_224"
+  #   object_sampler: "max"
+  #   max_num_objects_per_user: 100 # means we tak all of them 
+  #   support_instance_sampler: "random"
+  #   query_instance_sampler: "max"
+  #   query_video_type: "clutter"
+  #   max_num_instance_per_object: 20 # original 20 -> means we tak all of them # max number of videos per object
+  #   support_clip_sampler: "random"
+  #   query_clip_sampler: "random_200" # hardcoded for now in code
+  #   video_subsample_factor: 1
+  #   num_episodes_per_user: 1 #this should be exactly 50 tasks per user
+  #   video_clip_length: 1 # frames
+  #   max_num_clips_per_video: 10 # original 10 -> means we tak all of them | also hardcoded for testing
+  #   use_object_cluster_labels: False
+  #   num_threads: 4
+  #   num_workers: 0
+  #   batch_size: 1

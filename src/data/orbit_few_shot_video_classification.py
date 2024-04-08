@@ -58,9 +58,14 @@ def get_object_category_names_according_labels(videos_filenames, labels):
     mapping = {}
     for video_frame_filenames, label in zip(videos_filenames, labels):
         # object_name = filename[0].split("/")[-1].split("--")[1]
-        object_name = video_frame_filenames[0].split("/")[6]
+
+        ## NOTE hardcoded
+
+        # print(video_frame_filenames[0].split("/")[10])
+        object_name = video_frame_filenames[0].split("/")[10]
         if int(label) not in mapping:
             mapping[int(label)] = object_name
+                        
     mapping = {k: v for k, v in sorted(mapping.items(), key=lambda item: item[0])}
 
     def clean_object_category_names(object_list):
@@ -642,6 +647,16 @@ def ORBITUserCentricVideoFewShotClassification(
                                                max_num_frame=max_num_sampled_frames_per_video,
                                                num_sampled_clips=max_num_clips_per_video,
                                                subsample_factor=video_subsample_factor)
+
+    if mode == "test":
+        print("EVVAIII") # should be correct
+        query_clip_sampler = make_clip_sampler(sampling_type="random_200",
+                                               clip_length=1, # ehhe hardcoded
+                                               max_num_frame=1000, # this must be equal
+                                               num_sampled_clips=1000, # this must be equal                                              
+                                               subsample_factor=video_subsample_factor
+                                               )    
+    
     else:
         query_clip_sampler = make_clip_sampler(sampling_type="max",
                                                clip_length=video_clip_length,

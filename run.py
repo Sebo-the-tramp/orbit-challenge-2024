@@ -20,6 +20,10 @@ from pytorchlightning_trainer.utils.common import log_hyperparameters, PROJECT_R
 from pytorchlightning_trainer.callbacks.tensorboard_weight_distribution import TensorboardModelDistribution
 from pytorchlightning_trainer.callbacks.unfreeze_backbone import FeatureExtractorFreezeUnfreeze
 
+# Here we will import our custome Trainer with modified test_loop()
+
+from pytorchlightning_trainer.custom.better_test_loop import BetterTestEpochLoop
+from pytorchlightning_trainer.custom.better_loop import BetterLoop
 
 def build_callbacks(cfg: DictConfig) -> List[Callback]:
     callbacks: List[Callback] = []
@@ -137,6 +141,9 @@ def run(cfg: DictConfig) -> None:
 
     hydra.utils.log.info(f"Instantiating the Trainer")
 
+    ## TODO change to configuration file
+    custom_test_loop = False
+
     # The Lightning core, the Trainer
     trainer = pl.Trainer(
         devices=1,
@@ -158,6 +165,13 @@ def run(cfg: DictConfig) -> None:
     if cfg.train.skip_training:
         hydra.utils.log.info(f"Skip training!")
         hydra.utils.log.info(f"Starting testing!")
+
+        print("##" * 10, trainer.test_loop.epoch_loop)
+
+        if(custom_test_loop):                        
+            trainer.test_loop = BetterLoop()
+            trainer.test_loop.epoch_loop = BetterTestEpochLoop()
+        print("##" * 10, trainer.test_loop.epoch_loop) 
         trainer.test(model=model, datamodule=datamodule)
     else:
         hydra.utils.log.info(f"Starting training!")
