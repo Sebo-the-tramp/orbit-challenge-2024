@@ -55,3 +55,9 @@ docs/_build/
 *.ckpt
 
 .vscode/*
+
+#custom
+/dataset_images/*
+/statistics
+/logs
+/checkpoints

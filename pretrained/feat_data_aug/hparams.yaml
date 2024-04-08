@@ -1,0 +1,130 @@
+data:
+  datamodule:
+    _target_: pytorchlightning_trainer.datamodule.ORBITDataModuleDataAug
+    use_orbit_statistics: false
+    train_cfg:
+      root: /data02/datasets/ORBIT_microsoft
+      object_sampler: random
+      max_num_objects_per_user: 15
+      support_instance_sampler: random
+      query_instance_sampler: random
+      support_num_shot: 5
+      query_num_shot: 2
+      query_video_type: clutter
+      max_num_instance_per_object: 20
+      support_clip_sampler: random
+      query_clip_sampler: random
+      video_subsample_factor: 1
+      num_episodes_per_user: 500
+      video_clip_length: 8
+      max_num_clips_per_video: 10
+      use_object_cluster_labels: false
+      num_threads: 8
+      num_workers: 2
+      batch_size: 1
+    val_cfg:
+      root: /data02/datasets/ORBIT_microsoft
+      object_sampler: max
+      max_num_objects_per_user: 100
+      support_instance_sampler: max
+      query_instance_sampler: max
+      query_video_type: clutter
+      max_num_instance_per_object: 20
+      support_clip_sampler: random
+      query_clip_sampler: max
+      video_subsample_factor: 1
+      num_episodes_per_user: 1
+      video_clip_length: 8
+      max_num_clips_per_video: 10
+      use_object_cluster_labels: false
+      num_threads: 8
+      num_workers: 2
+      batch_size: 1
+    test_cfg:
+      root: /data02/datasets/ORBIT_microsoft
+      object_sampler: max
+      max_num_objects_per_user: 100
+      support_instance_sampler: max
+      query_instance_sampler: max
+      query_video_type: clutter
+      max_num_instance_per_object: 20
+      support_clip_sampler: random
+      query_clip_sampler: max
+      video_subsample_factor: 1
+      num_episodes_per_user: 1
+      video_clip_length: 8
+      max_num_clips_per_video: 10
+      use_object_cluster_labels: false
+      num_threads: 8
+      num_workers: 2
+      batch_size: 1
+logging:
+  val_check_interval: 0.1
+  progress_bar_refresh_rate: 2
+  log_every_n_steps: 16
+  tensorboard:
+    logger_dir: logs/tb_logs
+  lr_monitor:
+    logging_interval: step
+    log_momentum: false
+model:
+  _target_: pytorchlightning_trainer.module.ProtoNetWithLITE
+  pretrained_backbone_checkpoint_path: /home/ligu/projects/orbit_challenge_2022/features/pretrained/efficientnetb0_imagenet_224.pth
+  backbone_network: efficientnetb0
+  unfreeze_backbone: true
+  freeze_BN_layer: true
+  normalization_layer: basic
+  use_adapt_features: false
+  feature_adaptation_method: generate
+  classifier: feat
+  video_clip_length: 8
+  episode_subset_mini_batch_size: 8
+  num_episodes_per_meta_batch: 16
+  num_lite_samples: 8
+  use_two_gpus: false
+  lr: 0.0001
+optim:
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.001
+    betas:
+    - 0.9
+    - 0.999
+    eps: 1.0e-08
+    weight_decay: 0
+  use_lr_scheduler: true
+  lr_scheduler:
+    _target_: torch.optim.lr_scheduler.CosineAnnealingWarmRestarts
+    T_0: 10
+    T_mult: 2
+    eta_min: 0
+    last_epoch: -1
+    verbose: true
+train:
+  deterministic: true
+  random_seed: 42
+  exp_name: train_feat_data_aug
+  skip_training: false
+  pl_trainer:
+    fast_dev_run: false
+    gpus: 1
+    precision: 32
+    max_steps: 100000
+    max_epochs: 2
+    accumulate_grad_batches: 1
+    num_sanity_val_steps: 0
+    track_grad_norm: 2
+  monitor_metric: val_acc
+  monitor_metric_mode: max
+  model_checkpoints:
+    save_top_k: 15
+    verbose: false
+  TensorboardModelDistribution:
+    type: weight
+core:
+  version: 0.0.1
+  tags:
+  - mytag
+stats/params_total: 10564988
+stats/params_trainable: 10564988
+stats/params_not_trainable: 0
