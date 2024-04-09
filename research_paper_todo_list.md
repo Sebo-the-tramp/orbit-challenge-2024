@@ -33,6 +33,11 @@ Bad images:
 
 ### Study of the effect of self supervised pretraining on the downstream task (initial investigation)
 
+| Name                     |  Average Frame Accuracy  | Confidence Interval   |
+|--------------------------|--------------------------|-----------------------|
+| Phinet - 50    | -      |  -   |
+| Phinet - 500  | -      |  -   |
+
 ## Some tricks
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |
