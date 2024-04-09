@@ -1,6 +1,15 @@
 
 # Research Paper To-Do List
 
+Data type:
+
+- big: original dataset
+- small:
+  - train -> gt_labels
+  - clutter -> filtered with obj
+  - test -> if_net
+  - clutter -> filtered with obj 
+
 ## Ablation study
 
 ### Study the effect of the database difference for different backbones
