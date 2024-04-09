@@ -7,7 +7,7 @@
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
-| EfficientNet - big dataset - 50    | -      |  -   | Sebastian | Training |
+| EfficientNet - big dataset - 50    | -      |  -   |  Sebastian | Training - ws-l6-001 |
 | EfficientNet - small dataset - 50  | -      |  -   | Unknown | Unknown |
 | Phinet - big dataset - 50    | -      |  -   | Unknown | Unknown |
 | Phinet - small dataset - 50  | -      |  -   | Unknown | Unknown |
@@ -25,7 +25,7 @@ Bad images:
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
 | EfficientNet - 50    | -      |  -   | Unknown | Unknown |
-| EfficientNet - 500  | -      |  -   | Unknown | Unknown |
+| EfficientNet - 500  | -      |  -   | Sebastian | Training - kami02 |
 | Phinet - 50    | -      |  -   | Unknown | Unknown |
 | Phinet - 500  | -      |  -   | Unknown | Unknown |
 | MobileVIT - 50    | -      |  -   | Unknown | Unknown |
