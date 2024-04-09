@@ -142,5 +142,10 @@ P901 analysis
 - demonstrate that a vit might give more accuracy
 - if we have phinet self supervised, make the comparison.
 
+# We need a new table!
 
 
+| Name                     |  Average Frame Accuracy  | Confidence Interval   |
+|--------------------------|--------------------------|-----------------------|
+| EfficientNet - online baseline   | 0.6790       |  ±0.0056   |
+| EfficientNet - 50 episodes - big dataset (BASELINE)   | 0.6638479368843097       | ±0.05643283613519739   |

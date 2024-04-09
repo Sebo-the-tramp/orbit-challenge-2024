@@ -156,10 +156,22 @@ class EpisodeEvaluator:
         print("User_id = {}, The average frame accuracy across all {} testing videos  = {}, confidence_interval = {}".
               format(self.episode.query_video_results[0].user_id, len(total_metrics), mean_metric, confidence_interval))
 
-    def save_to_disk(self):
+    def save_to_disk(self, batch_idx):
         if not self.episode.query_video_results:
             raise ValueError("Error! No any video result has been registered")
         user_id = self.episode.query_video_results[0].user_id
+
+        # print("DIRECTORY to save", self.save_dir)
+
+        # note supposing there are 17 users
+        # the current episode per user will be given by
+
+        # curr_episode_per_user = batch_idx%17
+
+        # filename = os.path.join(self.save_dir, user_id + "-" + str(curr_episode_per_user).zfill(2)  + ".p")
+        # with open(filename, "wb") as f:
+        #     pickle.dump(self.episode, f)
+
         filename = os.path.join(self.save_dir, user_id + ".p")
         with open(filename, "wb") as f:
             pickle.dump(self.episode, f)
@@ -177,7 +189,7 @@ class FEATEpisodeEvaluator(EpisodeEvaluator):
 
 def convert_results_in_submission_format(exp_path: str):
     """
-    Example: https://eval.ai/web/challenges/challenge-page/1438/submission
+    OLD Example: https://eval.ai/web/challenges/challenge-page/1438/submission
         {
             "P177": {
                 "user_objects": ["bag", "hairbrush", "hat", "keys", "phone", "secateurs", "tv remote"],
@@ -192,11 +204,106 @@ def convert_results_in_submission_format(exp_path: str):
                 … #objects and predictions for all clutter videos for final test user
             }
         }
+
+    New Example:
+
+        {
+        "P177": 
+            [
+                # task 1 of 50 for user P177
+                {
+                    "task_object_list": ["bag", "hairbrush", "hat", "keys", "phone", "secateurs", "tv remote"], # all user P177's objects
+                    "task_macs_to_personalise": 2999565565035 # count of MAC (multiply-accumulate) operations for personlisation
+                    "task_videos" : {
+                        # clutter video 1 of N for user P177
+                        "P177--bag--clutter--Zj_1HvmNWejSbmYf_m4YzxHhSUUl-ckBtQ-GSThX_4E":
+                            {
+                                # frame predictions for 200 randomly sampled frames from the clutter video
+                                # format for each frame is "frame_number": object_prediction
+                                # where frame_number is a string taken from the frame's file name (e.g. "P177--bag--clutter--Zj_1HvmNWejSbmYf_m4YzxHhSUUl-ckBtQ-GSThX_4E-00001.jpg" --> "1") 
+                                # object prediction is an integer which indexes "task_object_list" above (0-indexed)  
+                                "1": 0, 
+                                "101": 1, 
+                                ..., 
+                                "118": 0, 
+                                "680": 6 
+                            },
+                        ...,
+                        # clutter video N of N for user P177
+                        "P177--hairbrush--clutter--GL4DgGhfREqG9d3j3RcvY3xZuFMaz3QcKfSU0gLUwJI": 
+                            {
+                                "45": 2, 
+                                "99": 3, 
+                                ..., 
+                                "700": 2, 
+                                "888": 2
+                            }
+                },
+                ...
+                # task 50 of 50 for user P177
+                {
+                    "task_object_list": ["bag", "hairbrush", "hat", "keys", "phone", "secateurs", "tv remote"], # all user P177's objects
+                    "task_macs_to_personalise": 5610541130290 # count of MAC (multiply-accumulate) operations for personlisation
+                    "task_videos" : {
+                        # clutter video 1 of N for user P177
+                        "P177--bag--clutter--Zj_1HvmNWejSbmYf_m4YzxHhSUUl-ckBtQ-GSThX_4E":
+                            {
+                                "60": 1, 
+                                "145": 1, 
+                                ..., 
+                                "566": 1, 
+                                "785": 4 
+                            },
+                        ...,
+                        # clutter video N of N for user P177
+                        "P177--hairbrush--clutter--GL4DgGhfREqG9d3j3RcvY3xZuFMaz3QcKfSU0gLUwJI": 
+                            {
+                                "62": 0, 
+                                "181": 2, 
+                                ..., 
+                                "502": 2, 
+                                "892": 1
+                            }
+
+                }
+            ], # end of user P177's 50 tasks
+        "P198":
+            [
+                # 50 dicts for test user P198
+            ],
+        ...
+        "P999":
+            [
+                # 50 dicts for final test user P999
+            ]
+        }
     """
+
+    # mac_to_personalize = 34567890 * support_images
+    # task_macs_to_personalise = 56124312543
+
     submission_results = {}
 
     episode_filenames = list(pathlib.Path(exp_path).rglob("*.p"))
     for filename in tqdm(episode_filenames):
+
+        # per_user_epidoses = []
+
+        # for i in 50:
+        #     single_episode_user = {}
+        #     single_episode_user["task_object_list"] = [] # all user objects
+        #     single_episode_user["task_macs_to_personalise"] = 2999565565035 # count of MAC (multiply-accumulate) operations for personlisation            
+
+        #     cluttered_videos_result = {}
+
+            # for cluttered_video_object in cluttered_videos_user:
+                
+
+            # single_episode_user["task_videos"] = {}
+
+
+        # weneed to understand if for episodes is single episode or for user
+
         with open(filename, "rb") as f:
             episode_result = pickle.load(f)
         user_id = episode_result.query_video_results[0].user_id

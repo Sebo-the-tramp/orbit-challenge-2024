@@ -54,7 +54,7 @@ class ProtoNetWithLITEVideoPostImproved(ProtoNetWithLITE):
 
     def test_step(self, val_batch, batch_idx):
 
-        print(val_batch["user_id"])
+        # print(val_batch["user_id"])
 
         support_clips_frames = val_batch['support_frames']
         support_clips_labels = val_batch['support_labels']
@@ -99,12 +99,11 @@ class ProtoNetWithLITEVideoPostImproved(ProtoNetWithLITE):
 
         support_clips_frames.to('cpu').detach()
 
+        # print("TOTAL NUMBER OF VIDEOS", len(val_batch['query_labels']))
 
-        print("TOTAL NUMBER OF VIDEOS", len(val_batch['query_labels']))
+        # print("TOTAL NUMBER OF IMAGES USED", len(val_batch['query_labels']) * 200 )
 
-        print("TOTAL NUMBER OF IMAGES USED", len(val_batch['query_labels']) * 200 )
-
-        print("TOTAL SIZE OF IMAGES USED", len(val_batch['query_labels']) * 200 * 224 * 224 * 3 / 1024 / 1024, "MB")        
+        # print("TOTAL SIZE OF IMAGES USED", len(val_batch['query_labels']) * 200 * 224 * 224 * 3 / 1024 / 1024, "MB")        
 
 
         ### HERE I SHOULD ALREADY BE ABLE TO RELEASE THE SUPPORT CLIP FRAMES
@@ -123,7 +122,7 @@ class ProtoNetWithLITEVideoPostImproved(ProtoNetWithLITE):
 
             # print("BACKWARD 2:", video_sequence_frames.shape)
             video_logits, video_features = self.model.predict(video_sequence_frames)  # Shape = [num_frames, num_classes]
-            print(video_logits.shape)
+            # print(video_logits.shape)
             video_prediction_scores = F.softmax(video_logits, dim=-1)
             video_predictions = video_logits.argmax(dim=-1).detach().cpu()
             num_frames = video_logits.shape[0]
@@ -140,8 +139,10 @@ class ProtoNetWithLITEVideoPostImproved(ProtoNetWithLITE):
 
         # print(" end", torch.cuda.memory_summary())
 
+        # print("CURRENT_BATCH:", batch_idx)
+        # print(batch_idx//17)
         self.episode_evaluator.compute_statistics()
-        self.episode_evaluator.save_to_disk()
+        self.episode_evaluator.save_to_disk(batch_idx)
         self.episode_evaluator.reset()
 
         # Example of deleting specific tensors
@@ -153,4 +154,4 @@ class ProtoNetWithLITEVideoPostImproved(ProtoNetWithLITE):
         # torch.cuda.empty_cache()  # Clear cache after deleting
 
         # print(torch.cuda.memory_summary(device=None, abbreviated=False))
-        print("FINEEE EPISODIO ")
+        # print("FINEEE EPISODIO ")

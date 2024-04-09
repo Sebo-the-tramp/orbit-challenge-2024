@@ -11,7 +11,7 @@ extractors = {
         'resnet18': resnet18,
         'resnet18_84': resnet18_84,
         'efficientnetb0' : efficientnetb0,
-        'mobilevitb' : mobilevitv2_075
+        'mobilevitb' : mobilevitv2_075,
         'phinet': phinet,
         'vit_small': dino_vit
         }

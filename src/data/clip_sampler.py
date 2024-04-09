@@ -128,13 +128,13 @@ class RandomMultiClipSampler200(FixedMultiClipSampler):
     def _sample_clips(self, non_overlapping_clips_candidates: List):     
         # if(len(non_overlapping_clips_candidates)<50):
         #     return [] 
-        print("non overlapping clips candidates, ma da dove arrivano?",len(non_overlapping_clips_candidates))  
+        # print("non overlapping clips candidates, ma da dove arrivano?",len(non_overlapping_clips_candidates))  
         random_num_clips = min(len(non_overlapping_clips_candidates), 200)
         sampled_clips = random.sample(non_overlapping_clips_candidates,
                                       k=random_num_clips)
         sampled_clips.sort(key=lambda x: x[0])
-        print(sampled_clips)
-        print(len(sampled_clips))
+        # print(sampled_clips)
+        # print(len(sampled_clips))
         return sampled_clips
 
 class MaxMultiClipSampler(FixedMultiClipSampler):

@@ -65,7 +65,6 @@ def get_object_category_names_according_labels(videos_filenames, labels):
         object_name = video_frame_filenames[0].split("/")[10]
         if int(label) not in mapping:
             mapping[int(label)] = object_name
-                        
     mapping = {k: v for k, v in sorted(mapping.items(), key=lambda item: item[0])}
 
     def clean_object_category_names(object_list):
@@ -205,10 +204,10 @@ class ORBITDatasetVideoInstanceSampler:
     def __call__(self, category_name_to_instances: Dict[str, List]) -> Tuple[List, List]:
 
         if "clean" not in category_name_to_instances.keys():
-            print(category_name_to_instances)
+            # print(category_name_to_instances)
             raise ValueError("There is no clean video instance")
         if "clutter" not in category_name_to_instances.keys():
-            print(category_name_to_instances)
+            # print(category_name_to_instances)
             raise ValueError("There is no clutter video instance")
 
         clean_video_instances = category_name_to_instances["clean"]
@@ -464,10 +463,10 @@ class UserCentricFewShotVideoClassificationDataset(torch.utils.data.Dataset):
             video = FrameVideo(video_folder_path=filename,
                                num_threads=self.num_threads,
                                clip_length=clip_sampler.clip_length)
-            clip_info_list = clip_sampler(total_num_frame_video=video.total_num_frames) 
-            frames_tensor, frame_filenames = video.get_multiple_clips(
-                clips_frame_indices_list=[clip_info.clip_frame_indices for clip_info in clip_info_list]
-            )
+            clip_info_list = clip_sampler(total_num_frame_video=video.total_num_frames)
+            frames_tensor, frame_filenames \
+                = video.get_multiple_clips(
+                clips_frame_indices_list=[clip_info.clip_frame_indices for clip_info in clip_info_list])
             num_clips = frames_tensor.size(0)
             multi_clips_frame.append(frames_tensor)
             multi_clips_frame_filenames.append(frame_filenames)
@@ -650,7 +649,9 @@ def ORBITUserCentricVideoFewShotClassification(
                                                num_sampled_clips=max_num_clips_per_video,
                                                subsample_factor=video_subsample_factor)
 
-    if mode == "test":
+    # this is called also in the training phase, that I don't know why.    
+
+    elif mode == "test":
         print("EVVAIII") # should be correct
         query_clip_sampler = make_clip_sampler(sampling_type="random_200",
                                                clip_length=1, # ehhe hardcoded
