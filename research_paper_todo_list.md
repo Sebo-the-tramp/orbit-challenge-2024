@@ -18,7 +18,7 @@ Data type:
 |--------------------------|--------------------------|-----------------------|------|--------|
 | EfficientNet - big dataset - 50    | -      |  -   |  Sebastian | Training - ws-l6-001 |
 | EfficientNet - small dataset - 50  | -      |  -   | Unknown | Unknown |
-| Phinet - big dataset - 50    | -      |  -   | Kami | Training -ws-l6-017 |
+| Phinet - big dataset - 50    | -      |  -   | Kami | dataset download -ws-l6-017 |
 | Phinet - small dataset - 50  | -      |  -   | Unknown | Unknown |
 | MobileVIT - big dataset - 50    | -      |  -   | Unknown | Unknown |
 | MobileVIT - small dataset - 50  | -      |  -   | Unknown | Unknown |
