@@ -173,6 +173,8 @@ class ProtoNetWithLITE(pl.LightningModule):
             self.log("train_accuracy_average_per_meta_batch", average_meta_batch_acc, on_step=True, on_epoch=False)
             self.train_metrics.reset()
 
+        ## Could we empty the GPU here?
+
     def on_validation_start(self) -> None:
         # Hard code; To avoid direct modifications on official_orbit.models.few_shot_recognizers.py
         self.model._set_device(self.device)
@@ -280,10 +282,6 @@ class ProtoNetWithLITE(pl.LightningModule):
     def on_test_end(self) -> None:
         convert_results_in_submission_format(self.episode_evaluator.save_dir)
         compute_average_frame_accuracy_across_videos(self.episode_evaluator.save_dir)
-
-    def test(self) -> None:
-
-        print("HEYYY it's working!!!!")
 
     def configure_optimizers(self):
         feature_extractor_params = list(map(id, self.model.feature_extractor.parameters()))
