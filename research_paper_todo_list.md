@@ -41,7 +41,7 @@ Bad images:
 ## Some tricks
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
-|--------------------------|--------------------------|-----------------------|------|--------|s
+|--------------------------|--------------------------|-----------------------|------|--------|
 | Phinet - 50 - Postprocessing   | -      |  -   | Unknown | Unknown |
 | Phinet - 50 - Majority voting   | -      |  -   | Unknown | Unknown |
 | Phinet - 50 - Something else?   | -      |  -   | Unknown | Unknown |
