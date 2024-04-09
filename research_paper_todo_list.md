@@ -29,7 +29,7 @@ Bad images:
 | Phinet - 50    | -      |  -   | Unknown | Unknown |
 | Phinet - 500  | -      |  -   | Unknown | Unknown |
 | MobileVIT - 50    | -      |  -   | Unknown | Unknown |
-| MobileVIT - 500  | -      |  -   | Unknown | Unknown |
+| MobileVIT - 500  | -      |  -   | Brana | ws-l3-001 |
 
 ### Study of the effect of self supervised pretraining on the downstream task (initial investigation)
 
