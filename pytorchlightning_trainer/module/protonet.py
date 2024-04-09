@@ -198,6 +198,7 @@ class ProtoNetWithLITE(pl.LightningModule):
             total_loss += F.cross_entropy(video_logits, video_labels, reduction="mean")
 
         self.model._reset()
+        torch.cuda.empty_cache()
         self.log("val_loss", total_loss / len(val_batch['query_labels']), on_step=False, on_epoch=True)
 
     def on_validation_epoch_start(self) -> None:

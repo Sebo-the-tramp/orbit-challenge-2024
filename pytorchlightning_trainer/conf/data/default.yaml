@@ -4,8 +4,7 @@ datamodule:
   use_orbit_statistics: False
 
   train_cfg:
-    root: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/orbit_benchmark_224"
-    object_sampler: "random"
+    root: "/home/branislava.jankovic/Documents/object_detection/project/orbit-challenge-2024/6514651651651"
     max_num_objects_per_user: 15
     support_instance_sampler: "random"
     query_instance_sampler: "random"
@@ -25,7 +24,7 @@ datamodule:
     batch_size: 1
 
   val_cfg:
-    root: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/orbit_benchmark_224"
+    root: "/home/branislava.jankovic/Documents/object_detection/project/orbit-challenge-2024/datas61651651651et"
     object_sampler: "max"
     max_num_objects_per_user: 100
     support_instance_sampler: "max"
@@ -44,7 +43,7 @@ datamodule:
     batch_size: 1
 
   test_cfg:
-    root: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/orbit_benchmark_224"
+    root: "/home/branislava.jankovic/Documents/object_detection/project/orbit-challenge-2024/datdddgfggfaset"
     object_sampler: "max"
     max_num_objects_per_user: 10
     support_instance_sampler: "max"
