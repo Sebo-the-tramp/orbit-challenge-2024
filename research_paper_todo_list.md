@@ -35,7 +35,7 @@ Data type:
 | MobileVIT - 50    | -      |  -   | Unknown | Unknown |
 | MobileVIT - 500  | -      |  -   | Brana | ws-l3-001 |
 
-### Study of the effect of self supervised pretraining on the downstream task (initial investigation)
+### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
@@ -50,8 +50,13 @@ Data type:
 | Phinet - 50 - Majority voting   | -      |  -   | Unknown | Unknown |
 | Phinet - 50 - Something else?   | -      |  -   | Unknown | Unknown |
 
+
+TODO:
+[] take away the folders with less than 50 images, to exclude them from testing
+[] fix macs calculation to export correctly to json file
+
 NOTE:
-we can also write about the images that contain both objects that could be both belong to some personalization objects -> AMBIGUITIES
+we can also write about the images that contain both objects that could both belong to some personalization objects -> AMBIGUITIES
 
 Good images:
 ![good](./docs/images/good_images.png "Good images")
