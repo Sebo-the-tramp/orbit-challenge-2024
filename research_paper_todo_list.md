@@ -50,7 +50,8 @@ Data type:
 | Phinet - 50 - Majority voting   | -      |  -   | Unknown | Unknown |
 | Phinet - 50 - Something else?   | -      |  -   | Unknown | Unknown |
 
-
+NOTE:
+we can also write about the images that contain both objects that could be both belong to some personalization objects -> AMBIGUITIES
 
 Good images:
 ![good](./docs/images/good_images.png "Good images")
