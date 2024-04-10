@@ -1,6 +1,6 @@
 _target_: pytorchlightning_trainer.module.ProtoNetWithLITE
 
-pretrained_backbone_checkpoint_path: ""
+pretrained_backbone_checkpoint_path: "/home/branislava.jankovic/Documents/object_detection/project/orbit-challenge-2024/pretrained/mobilevitv2_075-b5556ef6.pth"
 backbone_network: "mobilevitb"
 unfreeze_backbone: True
 freeze_BN_layer: True

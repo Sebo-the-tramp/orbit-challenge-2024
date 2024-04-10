@@ -14,7 +14,7 @@ pl_trainer:
   precision: 32
   num_sanity_val_steps: 0
 
-load_pretrained: ""
+load_pretrained: "/home/branislava.jankovic/Documents/object_detection/project/orbit-challenge-2024/.cache/2024-04-09/16-51-24/logs/tb_logs/proba_mobilevit_all_data_pretrained_500_epizodes_boze_pomozi_2/version_0/checkpoints/epoch=1-step=1650.ckpt"
 # https://drive.google.com/file/d/1ptYa-Nv52GDSSH6-3JECZIPFdUG-hOWS/view?usp=sharing
 #load_pretrained: "your_project_folder/checkpoints/epoch=0-step=10999.ckpt"
 

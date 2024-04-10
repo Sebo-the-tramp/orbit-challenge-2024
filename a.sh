@@ -1,1 +1,1 @@
-python run.py data=default_use_data_aug model=feat_with_lite train=with_lite_train train.exp_name="proba_mobilevit_all_data_pretrained"
+python run.py data=default_use_data_aug model=feat_with_lite train=with_lite_test train.exp_name="proba_mobilevit_all_data_pretrained_500_epizodes_boze_pomozi_2_test"

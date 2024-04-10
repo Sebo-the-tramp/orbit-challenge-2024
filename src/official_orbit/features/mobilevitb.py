@@ -647,14 +647,15 @@ def get_model_params():
     return blocks_args, global_params
 
 @register_model
-def mobilevitv2_075(pretrained = True, pretrained_model_path=None, batch_norm='basic', with_film=False, **kwargs):
+def mobilevitv2_075(pretrained=False, pretrained_model_path=None, batch_norm='basic', with_film=False, **kwargs):
     assert batch_norm == 'basic', 'TaskNorm not implemented for EfficientNets'
     blocks_args, global_params = get_model_params()
     model = _create_mobilevit('mobilevitv2_075', blocks_args, global_params, pretrained=pretrained, **kwargs)
-    if pretrained:
-        print(pretrained_model_path)
+    if (pretrained):
+        print('gffdgggfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
         ckpt = torch.load(pretrained_model_path)
-        # print(ckpt)
+        print('ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg')
+        print(pretrained_model_path)
         model.load_state_dict(ckpt)
     return model
 
