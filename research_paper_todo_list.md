@@ -23,11 +23,6 @@ Data type:
 | MobileVIT - big dataset - 50    | -      |  -   | Unknown | Unknown |
 | MobileVIT - small dataset - 50  | -      |  -   | Unknown | Unknown |
 
-Good images:
-![good](./docs/images/good_images.png "Good images")
-
-Bad images:
-![bad](./docs/images/bad_images.png "Bad images")
 
 ### Study the effect in the change in the number of epochs for different backbones 
 
@@ -57,4 +52,9 @@ Bad images:
 
 
 
+Good images:
+![good](./docs/images/good_images.png "Good images")
+
+Bad images:
+![bad](./docs/images/bad_images.png "Bad images")
 
