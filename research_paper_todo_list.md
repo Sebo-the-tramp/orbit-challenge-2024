@@ -19,7 +19,6 @@ Data type:
 | EfficientNet - big dataset - 50    | -      |  -   |  Sebastian | Testing - ws-l6-001 |
 | EfficientNet - small dataset - 50  | -      |  -   | Unknown | Unknown |
 | EfficientNet - big dataset - 500  | -      |  -   | Unknown | Unknown |
-| EfficientNet - small dataset - 500  | -      |  -   | Unknown | Unknown |
 | EfficientNet - small dataset - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
 | Phinet - big dataset - 50    | -      |  -   | Kami | Training -ws-l6-010 |
 | Phinet - small dataset - 50  | -      |  -   | Unknown | Unknown |
