@@ -24,12 +24,12 @@ Data type:
 | MobileVIT - small dataset - 50  | -      |  -   | Unknown | Unknown |
 
 
-### Study the effect in the change in the number of epochs for different backbones 
+### Study the effect in the change in the number of epochs for different backbones (small-dataset)
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
 | EfficientNet - 50    | -      |  -   | Unknown | Unknown |
-| EfficientNet - 500  | -      |  -   | Sebastian | Testing - kami02 |
+| EfficientNet - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
 | Phinet - 50    | -      |  -   | Unknown | Unknown |
 | Phinet - 500  | -      |  -   | Unknown | Unknown |
 | MobileVIT - 50    | -      |  -   | Unknown | Unknown |
