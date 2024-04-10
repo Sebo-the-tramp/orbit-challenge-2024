@@ -34,8 +34,8 @@ Data type:
 | EfficientNet - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
 | Phinet - 50    | -      |  -   | Unknown | Unknown |
 | Phinet - 500  | -      |  -   | Unknown | Unknown |
-| MobileVIT - 50    | -      |  -   | Unknown | Unknown |
-| MobileVIT - 500  | -      |  -   | Brana | ws-l3-001 |
+| MobileVIT - 50    | -      |  -   | Brana |  ws-l3-001 |
+| MobileVIT - 500  | -      |  -   | Unkown | Unkown |
 
 ### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
