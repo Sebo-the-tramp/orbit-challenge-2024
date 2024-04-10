@@ -34,7 +34,7 @@ Bad images:
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
 | EfficientNet - 50    | -      |  -   | Unknown | Unknown |
-| EfficientNet - 500  | -      |  -   | Sebastian | Training - kami02 |
+| EfficientNet - 500  | -      |  -   | Sebastian | Testing - kami02 |
 | Phinet - 50    | -      |  -   | Unknown | Unknown |
 | Phinet - 500  | -      |  -   | Unknown | Unknown |
 | MobileVIT - 50    | -      |  -   | Unknown | Unknown |
