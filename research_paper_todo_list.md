@@ -52,8 +52,9 @@ Data type:
 
 
 TODO:
-[] take away the folders with less than 50 images, to exclude them from testing
-[] fix macs calculation to export correctly to json file
+
+- [] take away the folders with less than 50 images, to exclude them from testing
+- [] fix macs calculation to export correctly to json file
 
 NOTE:
 we can also write about the images that contain both objects that could both belong to some personalization objects -> AMBIGUITIES
