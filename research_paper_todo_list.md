@@ -20,8 +20,8 @@ Data type:
 | EfficientNet - small dataset - 50  | 0.6530725011837245 | 0.03935080769579349 | Sebastian | Done - ws-l5-008 |
 | EfficientNet - big dataset - 500  |  0.6781074918554808 | 0.0386619883365546  | Sebastian | Done - Kami02 |
 | EfficientNet - small dataset - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done - Kami02 |
-| Phinet - big dataset - 50    | -      |  -   | Brana | Training |
-| Phinet - small dataset - 50  | -      |  -   | Sebastian | Training  |
+| Phinet - big dataset - 50    | -      |  -   | Brana | Testing |
+| Phinet - small dataset - 50  | -      |  -   | Sebastian | Testing - ws-l5-008  |
 | MobileVIT - big dataset - 50    | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
 | MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
 
@@ -31,7 +31,7 @@ Data type:
 |--------------------------|--------------------------|-----------------------|------|--------|
 | EfficientNet - 50    | -      |  -   | Unknown | Unknown |
 | EfficientNet - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
-| Phinet - 50    | -      |  -   | Unknown | Unknown |
+| Phinet - 50    | -      |  -   | Brana | Testing |
 | Phinet - 500 (big db)  | 0.6083022641687181      |  0.040819703094845325  | Sebastian | Done - Kami02 |
 | MobileVIT - 50    | -      |  -   | Brana |  ws-l3-001 |
 | MobileVIT - 500  | -      |  -   | Unkown | Unkown |
