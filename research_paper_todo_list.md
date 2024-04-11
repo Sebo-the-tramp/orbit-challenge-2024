@@ -29,7 +29,7 @@ Data type:
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
-| EfficientNet - 50    | -      |  -   | Unknown | Unknown |
+| EfficientNet - 50   | 0.6519797086743283 | 0.03974051029645851 |  Sebastian | Done |
 | EfficientNet - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
 | Phinet - 50    | -      |  -   | Brana | Testing |
 | Phinet - 500 (big db)  | 0.6083022641687181      |  0.040819703094845325  | Sebastian | Done - Kami02 |
