@@ -18,8 +18,8 @@ Data type:
 |--------------------------|--------------------------|-----------------------|------|--------|
 | EfficientNet - big dataset - 50    | 0.6519797086743283 | 0.03974051029645851 |  Sebastian | Done |
 | EfficientNet - small dataset - 50  | -      |  -   | Sebastian | Training - ws-l5-008 |
-| EfficientNet - big dataset - 500  | -      |  -   | Sebastian | Testing - Kami02 |
-| EfficientNet - small dataset - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
+| EfficientNet - big dataset - 500  |  0.6781074918554808 | 0.0386619883365546  | Sebastian | Done - Kami02 |
+| EfficientNet - small dataset - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done - Kami02 |
 | Phinet - big dataset - 50    | -      |  -   | Kami | Testing - ws-l6-010 |
 | Phinet - small dataset - 50  | -      |  -   | Unknown | Unknown |
 | MobileVIT - big dataset - 50    | -      |  -   | Unknown | Unknown |
