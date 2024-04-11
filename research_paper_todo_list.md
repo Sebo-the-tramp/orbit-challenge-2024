@@ -21,7 +21,7 @@ Data type:
 | EfficientNet - big dataset - 500  |  0.6781074918554808 | 0.0386619883365546  | Sebastian | Done - Kami02 |
 | EfficientNet - small dataset - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done - Kami02 |
 | Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
-| Phinet - small dataset - 50  | -      |  -   | Sebastian | Testing - ws-l5-008  |
+| Phinet - small dataset - 50  | 0.6319738170536263     |  -   | Sebastian | Testing - ws-l5-008  |
 | MobileVIT - big dataset - 50    | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
 | MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
 
@@ -38,7 +38,7 @@ Description of the dataset types:
 | Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - large dataset - 50    | -      |  -   | Uknown | Uknown |
 | Phinet - medium dataset - 50  | -      |  -   | Uknown | Uknown  |
-| Phinet - small dataset - 50  | -      |  -   | Sebastian | Testing - ws-l5-008  |
+| Phinet - small dataset - 50  |  0.6319738170536263     |   0.04035598926922223  | Sebastian | Testing - ws-l5-008  |
 
 
 ### Study the effect in the change in the number of epochs for different backbones (big db)
