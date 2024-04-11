@@ -25,6 +25,22 @@ Data type:
 | MobileVIT - big dataset - 50    | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
 | MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
 
+### Study the effect of the database difference for phinet backbone and different datasets (small - medium - large - big)
+
+Description of the dataset types:
+- *big*: original
+- *large*: 
+- *medium*:
+- *small*: only the best images in the dataset + IFnetwork in test clean
+
+| Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
+|--------------------------|--------------------------|-----------------------|------|--------|
+| Phinet - big dataset - 50    | -      |  -   | Brana | Testing |
+| Phinet - large dataset - 50    | -      |  -   | Uknown | Uknown |
+| Phinet - medium dataset - 50  | -      |  -   | Uknown | Uknown  |
+| Phinet - small dataset - 50  | -      |  -   | Sebastian | Testing - ws-l5-008  |
+
+
 ### Study the effect in the change in the number of epochs for different backbones (big db)
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
