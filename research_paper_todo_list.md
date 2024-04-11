@@ -25,16 +25,16 @@ Data type:
 | MobileVIT - big dataset - 50    | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
 | MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
 
-### Study the effect in the change in the number of epochs for different backbones (small-dataset) --> PROBABLY WILL CHANGE BIG DATASET
+### Study the effect in the change in the number of epochs for different backbones (big db)
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
-| EfficientNet - 50   | 0.6519797086743283 | 0.03974051029645851 |  Sebastian | Done |
-| EfficientNet - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
-| Phinet - 50    | -      |  -   | Brana | Testing |
+| EfficientNet - 50  (big db) | 0.6519797086743283 | 0.03974051029645851 |  Sebastian | Done |
+| EfficientNet - 500 (big db) | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
+| Phinet - 50 (big db)   | -      |  -   | Brana | Testing |
 | Phinet - 500 (big db)  | 0.6083022641687181      |  0.040819703094845325  | Sebastian | Done - Kami02 |
-| MobileVIT - 50    | -      |  -   | Brana |  ws-l3-001 |
-| MobileVIT - 500  | -      |  -   | Unkown | Unkown |
+| MobileVIT - 50 (big db)   | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
+| MobileVIT - 500  | NONE | NONE | Unknown | Unknown |
 
 ### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
