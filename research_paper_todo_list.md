@@ -20,7 +20,7 @@ Data type:
 | EfficientNet - small dataset - 50  | 0.6530725011837245 | 0.03935080769579349 | Sebastian | Done - ws-l5-008 |
 | EfficientNet - big dataset - 500  |  0.6781074918554808 | 0.0386619883365546  | Sebastian | Done - Kami02 |
 | EfficientNet - small dataset - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done - Kami02 |
-| Phinet - big dataset - 50    | -      |  -   | Brana | Testing |
+| Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - small dataset - 50  | -      |  -   | Sebastian | Testing - ws-l5-008  |
 | MobileVIT - big dataset - 50    | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
 | MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
@@ -35,7 +35,7 @@ Description of the dataset types:
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
-| Phinet - big dataset - 50    | -      |  -   | Brana | Testing |
+| Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - large dataset - 50    | -      |  -   | Uknown | Uknown |
 | Phinet - medium dataset - 50  | -      |  -   | Uknown | Uknown  |
 | Phinet - small dataset - 50  | -      |  -   | Sebastian | Testing - ws-l5-008  |
@@ -47,10 +47,10 @@ Description of the dataset types:
 |--------------------------|--------------------------|-----------------------|------|--------|
 | EfficientNet - 50  (big db) | 0.6519797086743283 | 0.03974051029645851 |  Sebastian | Done |
 | EfficientNet - 500 (big db) | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
-| Phinet - 50 (big db)   | -      |  -   | Brana | Testing |
+| Phinet - 50 (big db)   | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - 500 (big db)  | 0.6083022641687181      |  0.040819703094845325  | Sebastian | Done - Kami02 |
 | MobileVIT - 50 (big db)   | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
-| MobileVIT - 500  | NONE | NONE | Unknown | Unknown |
+| MobileVIT - 500 (big db)  | - | - | Brana | Training |
 
 ### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
