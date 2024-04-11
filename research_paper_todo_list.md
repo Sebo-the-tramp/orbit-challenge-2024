@@ -23,7 +23,7 @@ Data type:
 | Phinet - big dataset - 50    | -      |  -   | Brana | Training |
 | Phinet - small dataset - 50  | -      |  -   | Sebastian | Training  |
 | MobileVIT - big dataset - 50    | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
-| MobileVIT - small dataset - 50  | -      |  -   | Unknown | Unknown |
+| MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
 
 ### Study the effect in the change in the number of epochs for different backbones (small-dataset) --> PROBABLY WILL CHANGE BIG DATASET
 
