@@ -57,7 +57,7 @@ Description of the dataset types:
 | Phinet - 50 (big db)   | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - 500 (big db)  | 0.6083022641687181      |  0.040819703094845325  | Sebastian | Done - Kami02 |
 | MobileVIT - 50 (big db)   | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
-| MobileVIT - 500 (big db)  | - | - | Brana | Training |
+| MobileVIT - 500 (big db)  | 0.13363261311639074 | 0.030070685323659915 | Brana | Done |
 
 ### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
