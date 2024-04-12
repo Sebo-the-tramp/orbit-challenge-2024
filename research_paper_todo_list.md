@@ -38,8 +38,7 @@ Data type:
 
 Description of the dataset types:
 - *big*: original
-- *large*: **dropped:** 'object_not_present_issue', 'occlusion_issue', 'blur_issue'
-- *medium*: **dropped:** 'object_not_present_issue', 'blur_issue', 'occlusion_issue', 'viewpoint_issue', 'overexposed_issue', 'underexposed_issue'
+- *medium*: **dropped:** 'object_not_present_issue', 'occlusion_issue', 'blur_issue'
 - *small*: only the best images in the dataset + IFnetwork in test clean 
  
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
