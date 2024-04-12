@@ -38,10 +38,12 @@ Data type:
 
 Description of the dataset types:
 - *big*: original
-- *large*: dropped: 'object_not_present_issue', 'object_bounding_box','blur_issue','occlusion_issue'
-- *medium*: dropped: 'object_not_present_issue', 'object_bounding_box', 'framing_issue', 'blur_issue','occlusion_issue'
-- *small*: only the best images in the dataset + IFnetwork in test clean
-
+- *large*: **dropped:** 'object_not_present_issue', 'object_bounding_box','blur_issue','occlusion_issue'
+         ** thus 'framing_issue', 'viewpoint_issue', 'overexposed_issue','underexposed_issue' stays**
+- *medium*: ** dropped:** 'object_not_present_issue', 'object_bounding_box', 'framing_issue', 'blur_issue','occlusion_issue'
+          **  thus  'viewpoint_issue', 'overexposed_issue','underexposed_issue' stays**
+- *small*: only the best images in the dataset + IFnetwork in test clean 
+ 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
 | Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
