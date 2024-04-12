@@ -1,6 +1,13 @@
 
 # Research Paper To-Do List
 
+# 12.04.2024 
+- two new datasets
+- third table with strategies
+
+# 13.04.2024
+- 
+
 Data type:
 
 - big: original dataset
