@@ -44,7 +44,6 @@ Description of the dataset types:
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
 | Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
-| Phinet - large dataset - 50    | -      |  -   | Uknown | Uknown |
 | Phinet - medium dataset - 50  | -      |  -   | Uknown | Uknown  |
 | Phinet - small dataset - 50  |  0.6319738170536263     |   0.04035598926922223  | Sebastian | Testing - ws-l5-008  |
 
