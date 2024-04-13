@@ -29,8 +29,8 @@ Data type:
 | EfficientNet - small dataset - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done - Kami02 |
 | Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - small dataset - 50  | 0.6319738170536263     |  0.04035598926922223 | Sebastian | Done - ws-l5-008  |
-| MobileVIT - big dataset - 50    | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
-| MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
+| Mobilenet V3 - big dataset - 50    | -      |  -   | Brana | Training |
+| Mobilenet V3 - small dataset - 50  | NONE | NONE | Unknown | Unknown |
 
 [//]: # (| Phinet - big dataset - 50 - 1 epoch  | 0.6045990629830172      |  0.04094082216687125   | Sebastian | Done |)
 [//]: # ( | Phinet - small dataset - 50 max support sampler instead of random  | 0.62288852918077     | 0.04046261139498393 | Sebastian | Done - ws-l5-008  |)
@@ -55,8 +55,8 @@ Description of the dataset types:
 | EfficientNet - 500 (big db) | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done |
 | Phinet - 50 (big db)   | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - 500 (big db)  | 0.6083022641687181      |  0.040819703094845325  | Sebastian | Done - Kami02 |
-| MobileVIT - 50 (big db)   | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
-| MobileVIT - 500 (big db)  | 0.13363261311639074 | 0.030070685323659915 | Brana | Done |
+| Mobilenet V3 - 50 (big db)   | -      |  -   | Brana | Training |
+| Mobilenet V3 - 500 (big db)  | - | - | - | - |
 
 ### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
