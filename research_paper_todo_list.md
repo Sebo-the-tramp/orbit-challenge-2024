@@ -28,11 +28,13 @@ Data type:
 | EfficientNet - big dataset - 500  |  0.6781074918554808 | 0.0386619883365546  | Sebastian | Done - Kami02 |
 | EfficientNet - small dataset - 500  | 0.6704734775094003  | 0.03857772670822  | Sebastian | Done - Kami02 |
 | Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
-[comment]: <> (| Phinet - big dataset - 50 - 1 epoch  | 0.6045990629830172      |  0.04094082216687125   | Sebastian | Done |)
 | Phinet - small dataset - 50 (max support sampler instead of random)  | 0.62288852918077     | 0.04046261139498393 | Sebastian | Done - ws-l5-008  |
 | Phinet - small dataset - 50  | 0.6319738170536263     |  0.04035598926922223 | Sebastian | Done - ws-l5-008  |
 | MobileVIT - big dataset - 50    | 0.1336326131163907      |  0.03007068532365992   | Brana | Done |
 | MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
+
+[comment]: <> (| Phinet - big dataset - 50 - 1 epoch  | 0.6045990629830172      |  0.04094082216687125   | Sebastian | Done |)
+
 
 ### Study the effect of the database difference for phinet backbone and different datasets (small - medium - large - big)
 
