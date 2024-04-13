@@ -63,8 +63,10 @@ Description of the dataset types:
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
-| Phinet - 50    | -      |  -   | Unknown | Unknown |
-| Phinet - 500  | -      |  -   | Unknown | Unknown |
+| Phinet - 50 - Imagenet 20% acc | -      |  -   | Unknown | Unknown |
+| Phinet - 500 - Imagenet 20% acc | -      |  -   | Unknown | Unknown |
+| Phinet - 50 - Cifar 60% acc | -      |  -   | Unknown | Unknown |
+| Phinet - 500 - Cifar 60% acc | -      |  -   | Unknown | Unknown |
 
 ## Some tricks
 
