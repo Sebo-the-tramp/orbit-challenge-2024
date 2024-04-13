@@ -72,8 +72,8 @@ Description of the dataset types:
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
-| Phinet - 50 - Imagenet 20% acc | -      |  -   | Unknown | Unknown |
-| Phinet - 500 - Imagenet 20% acc | -      |  -   | Unknown | Unknown |
+| Phinet - 50 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian |
+| Phinet - 500 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian |
 | Phinet - 50 - Cifar 50% acc | -      |  -   | Unknown | Unknown |
 | Phinet - 500 - Cifar 50% acc | -      |  -   | Training | Sebastian - ws-l6-007 |
 
