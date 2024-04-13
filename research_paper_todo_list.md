@@ -65,8 +65,8 @@ Description of the dataset types:
 |--------------------------|--------------------------|-----------------------|------|--------|
 | Phinet - 50 - Imagenet 20% acc | -      |  -   | Unknown | Unknown |
 | Phinet - 500 - Imagenet 20% acc | -      |  -   | Unknown | Unknown |
-| Phinet - 50 - Cifar 60% acc | -      |  -   | Unknown | Unknown |
-| Phinet - 500 - Cifar 60% acc | -      |  -   | Unknown | Unknown |
+| Phinet - 50 - Cifar 50% acc | -      |  -   | Unknown | Unknown |
+| Phinet - 500 - Cifar 50% acc | -      |  -   | Unknown | Unknown |
 
 ## Some tricks
 
