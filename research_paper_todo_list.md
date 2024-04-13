@@ -39,12 +39,22 @@ Description of the dataset types:
 - *big*: original
 - *medium*: **dropped:** 'object_not_present_issue', 'occlusion_issue', 'blur_issue' + IFnetwork in test clean 
 - *small*: only the best images in the dataset + IFnetwork in test clean 
+
+### On phinet 50 epochs
  
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
 | Phinet - big dataset - 50  (1.8 mil. images)  | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - medium dataset - 50 (1.3 mil. images) | 0.6195229377169459     | 0.04087509739856873 | Kami | Done |
 | Phinet - small dataset - 50 (1.1 mil. images) |  0.6319738170536263     |   0.04035598926922223  | Sebastian | Done  |
+
+### On phinet 500 epochs
+
+| Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
+|--------------------------|--------------------------|-----------------------|------|--------|
+| Phinet - big dataset - 500  (1.8 mil. images)   |  0.6083022641687181       |  0.040819703094845325   | Brana | Done |
+| Phinet - medium dataset - 500 (1.3 mil. images) | -    | - | Kami | Training (?) |
+| Phinet - small dataset - 500 (1.1 mil. images)  | -    | - | Unknown | Unknown |
 
 
 ### Study the effect in the change in the number of epochs for different backbones (big db)
