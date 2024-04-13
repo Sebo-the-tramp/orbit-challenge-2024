@@ -53,7 +53,7 @@ Description of the dataset types:
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
 | Phinet - big dataset - 500  (1.8 mil. images)   |  0.6083022641687181       |  0.040819703094845325   | Brana | Done |
-| Phinet - medium dataset - 500 (1.3 mil. images) | -    | - | Kami | Training (?) |
+| Phinet - medium dataset - 500 (1.3 mil. images) | -    | - | Unknown | Training (?) |
 | Phinet - small dataset - 500 (1.1 mil. images)  | -    | - | Unknown | Unknown |
 
 
