@@ -57,7 +57,7 @@ Description of the dataset types:
 | Phinet - small dataset - 500 (1.1 mil. images)  | -    | - | Unknown | Unknown |
 
 
-### Study the effect in the change in the number of epochs for different backbones (big db)
+### Study the effect in the change in the number of EPISODES for different backbones (big db)
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
