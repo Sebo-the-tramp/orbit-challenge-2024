@@ -34,8 +34,7 @@ Data type:
 | MobileVIT - small dataset - 50  | NONE | NONE | Unknown | Unknown |
 
 [comment]: <> (| Phinet - big dataset - 50 - 1 epoch  | 0.6045990629830172      |  0.04094082216687125   | Sebastian | Done |)
-
-[comment]: <> (| Phinet - small dataset - 50 (max support sampler instead of random)  | 0.62288852918077     | 0.04046261139498393 | Sebastian | Done - ws-l5-008  |)
+| Phinet - small dataset - 50 (max support sampler instead of random)  | 0.62288852918077     | 0.04046261139498393 | Sebastian | Done - ws-l5-008  |
 
 
 ### Study the effect of the database difference for phinet backbone and different datasets (small - medium - large - big)
