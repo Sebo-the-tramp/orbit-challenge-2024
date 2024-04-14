@@ -1,22 +1,6 @@
 
 # Research Paper To-Do List
 
-# 12.04.2024 
-- two new datasets
-- third table with strategies
-
-# 13.04.2024
-- 
-
-Data type:
-
-- big: original dataset
-- small:
-  - train -> gt_labels
-  - clutter -> filtered with obj
-  - test -> if_net
-  - clutter -> filtered with obj 
-
 ## Ablation study
 
 ### Study the effect of the database difference for different backbones
