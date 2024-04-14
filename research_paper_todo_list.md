@@ -70,12 +70,12 @@ Description of the dataset types:
 
 ### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
-| Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
-|--------------------------|--------------------------|-----------------------|------|--------|
-| Phinet - 50 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian |
-| Phinet - 500 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian |
-| Phinet - 50 - Cifar 50% acc | -      |  -   | Unknown | Unknown |
-| Phinet - 500 - Cifar 50% acc | -      |  -   | Training | Sebastian - ws-l6-007 |
+| Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status | NOTE |
+|--------------------------|--------------------------|-----------------------|------|--------|------|
+| Phinet - 50 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian ||
+| Phinet - 500 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian ||
+| Phinet - 50 - Cifar 50% acc | -      |  -   | Unknown | Unknown ||
+| Phinet - 500 - Cifar 50% acc | -      |  -   | Pending GPU | Sebastian - ws-l6-007 |training stopped halfway trough second epoch, might already be meaningful. test needed|
 
 ## Some tricks
 
