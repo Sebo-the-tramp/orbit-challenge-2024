@@ -14,7 +14,7 @@
 | Phinet - big dataset - 50    | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - small dataset - 50  | 0.6319738170536263     |  0.04035598926922223 | Sebastian | Done - ws-l5-008  |
 | Mobilenet V3 - big dataset - 50    | 0.587404585026228  |  0.042806050840395724 | Brana | Done |
-| Mobilenet V3 - small dataset - 50  | NONE | NONE | Unknown | Unknown |
+| Mobilenet V3 - small dataset - 50  | 0.6591124930687723| 0.0395277036588839 | Kami| Done|
 
 [//]: # (| Phinet - big dataset - 50 - 1 epoch  | 0.6045990629830172      |  0.04094082216687125   | Sebastian | Done |)
 [//]: # ( | Phinet - small dataset - 50 max support sampler instead of random  | 0.62288852918077     | 0.04046261139498393 | Sebastian | Done - ws-l5-008  |)
