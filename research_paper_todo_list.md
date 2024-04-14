@@ -83,7 +83,7 @@ Description of the dataset types:
 |--------------------------|--------------------------|-----------------------|------|--------|
 | Phinet - 50 - Postprocessing   | -      |  -   | Unknown | Unknown |
 | Phinet - 50 - Majority voting   | -      |  -   | Unknown | Unknown |
-| Phinet - 50 - Something else?   | -      |  -   | Unknown | Unknown |
+| Phinet - 50 - Self supervised at this point  | -      |  -   | Unknown | Unknown |
 
 
 TODO:
