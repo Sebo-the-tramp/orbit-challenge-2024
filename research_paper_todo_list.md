@@ -52,6 +52,13 @@ Description of the dataset types:
 | Mobilenet V3 - 50 (big db)   | -      |  -   | Brana | Training |
 | Mobilenet V3 - 500 (big db)  | - | - | - | - |
 
+### Study the effect in the change in the number of EPOCHS for phinet (small db)
+
+| Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
+|--------------------------|--------------------------|-----------------------|------|--------|
+|  Phinet - 50 - 2 e  | 0.6319738170536263     |  0.04035598926922223 | Sebastian | Done |
+|  Phinet - 50  | 0.6319738170536263     |  0.04035598926922223 | Kami | Done  |
+
 ### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status | NOTE |
