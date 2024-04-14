@@ -56,8 +56,8 @@ Description of the dataset types:
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status |
 |--------------------------|--------------------------|-----------------------|------|--------|
-|  Phinet - 50 - 2 e  | 0.6319738170536263     |  0.04035598926922223 | Sebastian | Done |
-|  Phinet - 50  | 0.6319738170536263     |  0.04035598926922223 | Kami | Done  |
+|  Phinet - 50 - 2 epochs  | 0.6319738170536263     |  0.04035598926922223 | Sebastian | Done |
+|  Phinet - 50 - 5 epochs  | 0.629246002259729    |  0.040353474313382216| Kami | Done  |
 
 ### Study of the effect of self-supervised pretraining on the downstream task (initial investigation)
 
