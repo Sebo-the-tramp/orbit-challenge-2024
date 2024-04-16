@@ -63,8 +63,8 @@ Description of the dataset types:
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status | NOTE |
 |--------------------------|--------------------------|-----------------------|------|--------|------|
-| Phinet - 50 - Imagenet 30% acc | 0.35792436117508347 | 0.04466637960245303  | Done | TRAINING |  |
-| Phinet - 50 - Cifar 50% acc | 0.2960068629004077  |  0.040999001825241445  | Done | TRAINING ||
+| Phinet - 50 - Imagenet 30% acc | 0.35792436117508347 | 0.04466637960245303  | Sebastian | Done |  |
+| Phinet - 50 - Cifar 50% acc | 0.2960068629004077  |  0.040999001825241445  | Sebastian | Done ||
 | Phinet - 500 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian | NOT POSSIBLE FOR TIME |
 | Phinet - 500 - Cifar 50% acc | -      |  -   | Pending GPU | Sebastian - ws-l6-007 | BUG IN THE CODE|
 
