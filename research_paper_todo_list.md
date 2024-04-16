@@ -63,10 +63,10 @@ Description of the dataset types:
 
 | Name                     |  Average Frame Accuracy  | Confidence Interval   |  WHO | Status | NOTE |
 |--------------------------|--------------------------|-----------------------|------|--------|------|
-| Phinet - 50 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian ||
-| Phinet - 500 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian ||
-| Phinet - 50 - Cifar 50% acc | -      |  -   | Unknown | Unknown ||
-| Phinet - 500 - Cifar 50% acc | -      |  -   | Pending GPU | Sebastian - ws-l6-007 |training stopped halfway trough second epoch, might already be meaningful. test needed|
+| Phinet - 50 - Imagenet 20% acc | -      |  -   | Sebastian | TRAINING |  |
+| Phinet - 50 - Cifar 50% acc |  -      |  -   | Sebastian | TRAINING ||
+| Phinet - 500 - Imagenet 20% acc | -      |  -   | INCOMINNNG | Sebastian | NOT POSSIBLE FOR TIME |
+| Phinet - 500 - Cifar 50% acc | -      |  -   | Pending GPU | Sebastian - ws-l6-007 | BUG IN THE CODE|
 
 ## Some tricks
 
