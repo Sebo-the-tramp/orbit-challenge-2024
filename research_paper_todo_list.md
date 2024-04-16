@@ -50,7 +50,7 @@ Description of the dataset types:
 | Phinet - 50 (big db)   | 0.5969983820930811      |  0.04065243122345036   | Brana | Done |
 | Phinet - 500 (big db)  | 0.6083022641687181      |  0.040819703094845325  | Sebastian | Done - Kami02 |
 | Mobilenet V3 - 50 (big db)   |0.5763458436156461| 0.042366017120875704  | Kami | Done |
-| Mobilenet V3 - 500 (big db)  | - | - | Brana | Training |
+| Mobilenet V3 - 500 (big db)  | 0.5763458436156461 | 0.042366017120875704 | Brana | Done |
 
 ### Study the effect in the change in the number of EPOCHS for phinet (small db)
 
