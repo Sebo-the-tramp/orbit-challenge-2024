@@ -1,6 +1,7 @@
 _target_: pytorchlightning_trainer.module.ProtoNetWithLITE
 
-pretrained_backbone_checkpoint_path: "/home/zhumakhanova/Desktop/cv703_project/orbit-challenge-2024/pretrained/efficientnet-b0-355c32eb.pth"
+pretrained_backbone_checkpoint_path: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/orbit-challenge-2024/pretrained/efficientnet-b0-355c32eb.pth"
+# pretrained_backbone_checkpoint_path: ""
 backbone_network: "efficientnetb0"
 unfreeze_backbone: True
 freeze_BN_layer: True

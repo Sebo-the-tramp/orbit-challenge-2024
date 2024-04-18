@@ -1,3 +1,5 @@
+import hydra
+
 import os.path
 from typing import Any, Callable, Dict, List, Optional, Tuple, Type, Union
 import numpy as np
@@ -345,6 +347,9 @@ def compute_average_frame_accuracy_across_videos(exp_path: str):
 
     total_metrics = np.array(total_frame_accuracy)
     mean_metric = np.mean(total_metrics)
-    confidence_interval = calculate_confidence_interval(total_metrics)
+    confidence_interval = calculate_confidence_interval(total_metrics)    
     print("The average frame accuracy across all {} testing videos  = {}, confidence_interval = {}".
+          format(len(total_metrics), mean_metric, confidence_interval))
+    
+    hydra.utils.log.info("The average frame accuracy across all {} testing videos  = {}, confidence_interval = {}".
           format(len(total_metrics), mean_metric, confidence_interval))

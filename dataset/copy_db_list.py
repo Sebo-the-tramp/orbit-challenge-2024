@@ -33,7 +33,7 @@ if __name__ == "__main__":
         sys.exit(1)
     
     image_list_path = sys.argv[1]    
-    src_base = Path("/home/zhumakhanova/Desktop/cv703_project/")
-    target_base = Path("/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_only_good")
+    src_base = Path("/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/")
+    target_base = Path("/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/dataset_small/")
     
     create_symlinks(image_list_path, src_base, target_base)

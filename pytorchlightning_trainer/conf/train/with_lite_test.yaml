@@ -14,7 +14,7 @@ pl_trainer:
   precision: 16
   num_sanity_val_steps: 0
 
-load_pretrained: "/home/zhumakhanova/Desktop/cv703_project/orbit-challenge-2024/.cache/2024-04-07/11-32-58/pretrained/orbit/epoch=1-step=260.ckpt"
+load_pretrained: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/orbit-challenge-2024/.cache/2024-04-17/19-57-28/pretrained/orbit/epoch=1-step=164.ckpt"
 # https://drive.google.com/file/d/1ptYa-Nv52GDSSH6-3JECZIPFdUG-hOWS/view?usp=sharing
 #load_pretrained: "your_project_folder/checkpoints/epoch=0-step=10999.ckpt"
 

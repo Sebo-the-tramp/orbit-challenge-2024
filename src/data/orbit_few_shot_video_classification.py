@@ -204,7 +204,7 @@ class ORBITDatasetVideoInstanceSampler:
     def __call__(self, category_name_to_instances: Dict[str, List]) -> Tuple[List, List]:
 
         if "clean" not in category_name_to_instances.keys():
-            # print(category_name_to_instances)
+            print(category_name_to_instances)
             raise ValueError("There is no clean video instance")
         if "clutter" not in category_name_to_instances.keys():
             # print(category_name_to_instances)

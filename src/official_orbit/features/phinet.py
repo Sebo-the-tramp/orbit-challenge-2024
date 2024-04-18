@@ -38,15 +38,15 @@ class PhinetAdapter(mm.MicroMind):
             num_layers=7,
             beta=0.75,
             t_zero=5,
-            compatibility=False,
-            divisor=8,
+            # compatibility=False,
+            # divisor=8,
             downsampling_layers=[5,7],
             return_layers=None,
             # classification-specific
             include_top=False,
-            num_classes=0,
+            num_classes=1000,
+            flattened_embeddings=True
         )     
-
         
 
         print("Number of parameters for each module:")
@@ -57,22 +57,37 @@ class PhinetAdapter(mm.MicroMind):
 
         if pretrained:        
         
+            # for name, param in self.modules['feature_extractor'].named_parameters():
+            #     print(name)
+    
             # Taking away the classifier from pretrained model
-            pretrained_dict = torch.load('../../../pretrained/phinet/state_dict.pth_v2.tar', map_location=torch.device('cuda:0'))
+            # change this 
+            pretrained_dict = torch.load('/home/sebastian.cavada/Documents/scsv/semester2/CV703/orbit-challenge-2024/pretrained/barlow_twins-imagenet-zqo3gts4-ep=52.ckpt', map_location=torch.device('cuda:0'))
+            # pretrained_dict = torch.load('/home/sebastian.cavada/Documents/scsv/semester2/CV703/orbit-challenge-2024/pretrained/barlow_twins_cifar100_phinet-gxd4z3ai-ep=999.ckpt')
+
+
+            pretrained_dict["state_dict"] = {key.replace('backbone.', ''): value for key, value in pretrained_dict["state_dict"].items()}
+
+            # print(pretrained_dict["state_dict"])
+
             model_dict = {}
-            for k, v in pretrained_dict.items():
-                if "classifier" not in k:
+
+            for k, v in pretrained_dict["state_dict"].items():                
+                if "classifier"  not in k and "projector" not in k:
+                    print("YESS", k)
                     model_dict[k] = v
+                else:
+                    print("I SHOULDNT ENTER", k)                    
                     
             self.modules['feature_extractor'].load_state_dict(model_dict)
             # backbone unfrozen
             # for _, param in self.modules['feature_extractor'].named_parameters():
             #     param.requires_grad = False
 
-            self.modules['flattener'] = nn.Sequential(
-                nn.AdaptiveAvgPool2d((1, 1)),
-                nn.Flatten()
-            )  
+            # self.modules['flattener'] = nn.Sequential(
+            #     nn.AdaptiveAvgPool2d((1, 1)),
+            #     nn.Flatten()
+            # )  
 
         self.modules.to(device='cuda:0')
 
@@ -92,7 +107,7 @@ class PhinetAdapter(mm.MicroMind):
         img = self._flatten(batch)
 
         x = self.modules["feature_extractor"](img)
-        x = self.modules["flattener"](x)
+        # x = self.modules["flattener"](x)
         return x
 
     def setup_criterion(self):
@@ -141,7 +156,7 @@ class PhinetAdapter(mm.MicroMind):
 
     @property
     def output_size(self):
-        return 440
+        return 441
 
 def phinet(pretrained=False, pretrained_model_path=None, batch_norm='basic', with_film=False, **override_params): 
     """

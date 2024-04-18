@@ -150,7 +150,7 @@ def run(cfg: DictConfig) -> None:
         default_root_dir=hydra_dir,
         logger=tb_logger,
         callbacks=callbacks,
-        deterministic=cfg.train.deterministic,
+        deterministic="warn",
         val_check_interval=cfg.logging.val_check_interval,
         # progress_bar_refresh_rate=cfg.logging.progress_bar_refresh_rate,
         log_every_n_steps=cfg.logging.log_every_n_steps,

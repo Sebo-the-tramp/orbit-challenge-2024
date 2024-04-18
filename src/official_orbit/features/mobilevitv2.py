@@ -1,18 +1,18 @@
-from urllib.request import urlopen
-from PIL import Image
 import timm
 
+import torch
+from torch import nn
 
 VALID_MODELS = (
     'mobilevitv2_075'
 )
 
-class MobileVitAdapter():
+class MobileVitAdapter(nn.Module):
     """Implements an image classification class. Provides support
     for timm augmentation and loss functions."""
 
     def __init__(self, hparams, pretrained, *args, **kwargs):
-        super().__init__(hparams, *args, **kwargs)
+        super().__init__()
         
         self.model = timm.create_model(
             'mobilevitv2_075.cvnets_in1k',
@@ -24,7 +24,16 @@ class MobileVitAdapter():
         self.transforms = timm.data.create_transform(**self.data_config, is_training=False)       
 
         # not sure if it's needed
-        self.model.to(device='cuda:0')
+        # self.model.to(device='cuda:0')
+
+    def extract_features(self, inputs):
+
+        output = self.model.forward_features(inputs)
+        # output is unpooled, a (1, 384, 8, 8) shaped tensor
+
+        output = self.model.forward_head(output, pre_logits=True)
+
+        return output
 
 
     def forward(self, batch, drop_connect_rate=None):
@@ -41,10 +50,9 @@ class MobileVitAdapter():
         """
         img = self._flatten(batch)
 
-        output = self.model.forward_features(self.transforms(img).unsqueeze(0))
-        # output is unpooled, a (1, 384, 8, 8) shaped tensor
+        output = self.extract_features(img)
 
-        output = self.model.forward_head(output, pre_logits=True)
+        
         # output is a (1, num_features) shaped tensor
         return output
     
@@ -62,11 +70,12 @@ class MobileVitAdapter():
         sz = x.size()
         return x.view(-1, sz[-3], sz[-2], sz[-1]) if x.dim() >=5 else x
         
+    def parameters(self):
+        return self.model.parameters()
 
     @property
-    def output_size(self):
-        # TO CHANGE
-        return 440
+    def output_size(self):        
+        return 384
 
 def mobilevitv2_075(pretrained=False, pretrained_model_path=None, batch_norm='basic', with_film=False, **override_params): 
     """

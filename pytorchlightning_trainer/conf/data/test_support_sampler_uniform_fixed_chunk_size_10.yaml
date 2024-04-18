@@ -5,7 +5,7 @@ datamodule:
   use_orbit_statistics: False
 
   train_cfg:
-    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_legit/orbit_benchmark_224"
+    root: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/dataset_small/orbit_benchmark_224"
     object_sampler: "random"
     max_num_objects_per_user: 15
     support_instance_sampler: "random"
@@ -17,7 +17,7 @@ datamodule:
     support_clip_sampler: "random"
     query_clip_sampler: "random"
     video_subsample_factor: 1
-    num_episodes_per_user: 500
+    num_episodes_per_user: 50
     video_clip_length: 8
     max_num_clips_per_video: 10
     use_object_cluster_labels: False
@@ -26,7 +26,7 @@ datamodule:
     batch_size: 1
 
   val_cfg:
-    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_legit/orbit_benchmark_224"
+    root: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/dataset_small/orbit_benchmark_224"
     object_sampler: "max"
     max_num_objects_per_user: 100
     support_instance_sampler: "max"
@@ -45,7 +45,7 @@ datamodule:
     batch_size: 1
 
   test_cfg:
-    root: "/home/zhumakhanova/Desktop/cv703_project/orbit_benchmark_224/dataset_legit/orbit_benchmark_224"
+    root: "/home/sebastian.cavada/Documents/scsv/semester2/CV703/datasets/dataset_small/orbit_benchmark_224"
     object_sampler: "max"
     max_num_objects_per_user: 100
     support_instance_sampler: "max"
@@ -55,7 +55,7 @@ datamodule:
     support_clip_sampler: "uniform_fixed_chunk_size"
     query_clip_sampler: "max"
     video_subsample_factor: 1
-    num_episodes_per_user: 1
+    num_episodes_per_user: 5
     video_clip_length: 1
     max_num_clips_per_video: 10
     use_object_cluster_labels: False
