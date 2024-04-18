@@ -3,7 +3,8 @@
 
 trying to run baseline 2022 -->
  # Enhancing Few-Shot Recognition: An initial study on the effectiveness of Informative Filter Network on Lightweight Architectures
- ![alt text](Program-1707706825783.jpeg "Title")
+ ![alt text](docs/images/preza.png "Title")
+
  ## Abstract
 In this work we present our preliminary solution for ORBIT 2024 challenge. Our work introduces IF-Net, an optimized, lightweight neural
 network designed specifically to improve the efficiency and
