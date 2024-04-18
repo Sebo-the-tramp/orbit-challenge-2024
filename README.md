@@ -55,6 +55,8 @@ We chose the 224*224 version of the ORBIT dataset. Please, follow the guidelines
 
 Change the data root path, `data.train_cfg.root = your_orbit_dataset_folder_path`, `data.val_cfg.root = your_orbit_dataset_folder_path` and
 `data.test_cfg.root = your_orbit_dataset_folder_path`. [See example here](https://github.com/Sebo-the-tramp/orbit-challenge-2024/blob/main/pytorchlightning_trainer/conf/data/default_use_data_aug.yaml#L8)
+
+
 ## Installation
 
 Git clone the repository
@@ -110,7 +112,25 @@ model=feat_with_lite_video_post_improved
 train=with_lite_test 
 train.exp_name="reproduce_our_results"
 ```
-or simply run 
+- or simply run 
 
 ```
 sh start_test.sh
+```
+
+
+## Non-informative images removal from the dataset
+In case you want to clean the dataset from images with issues, specify th following in these jupyter notebooks:
+- the issues to exclude (i.e `object_not_present_issue`)
+- the name of txt file to save the output of the code to
+
+and run all cells in
+- `dataset/convert_test.ipynb`
+- `dataset/convert_train.ipynb`
+- `dataset/convert_val.ipynb`
+
+Then modify the `src_base` to the path of the original dataset and `target_base` to the path where to save the modified dataset in `target_base` in `dataset/copy_db.py` and run
+
+```
+python dataset/copy_db.py /path/to/your_new_dataset.txt
+```
