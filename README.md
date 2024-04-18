@@ -1,69 +1,115 @@
-https://app.codesee.io/maps/e6cb4840-c951-11ee-b402-6d85204823e2
-![alt text](Program-1707706825783.jpeg "Title")
+<!-- https://app.codesee.io/maps/e6cb4840-c951-11ee-b402-6d85204823e2
 
-trying to run baseline 2022
 
-create an environment with python3.8
+trying to run baseline 2022 -->
+ # Enhancing Few-Shot Recognition: An initial study on the effectiveness of Informative Filter Network on Lightweight Architectures
+ ![alt text](Program-1707706825783.jpeg "Title")
+ ## Abstract
+In this work we present our preliminary solution for ORBIT 2024 challenge. Our work introduces IF-Net, an optimized, lightweight neural
+network designed specifically to improve the efficiency and
+accuracy of teachable object recognizers, which are critical in assisting visually impaired individuals in locating personal belongings. Employing an advanced sampling
+strategy, IF-Net selectively identifies the most informative
+frames from video data, optimizing the training data quality
+and enabling more effective learning with constrained com-
+putational resources. Moreover, our study includes an in-
+depth performance analysis and an ablation study focused
+on the impact of hyperparameter variations on final accu-
+racy. Additionally, our study facilitates efficient training
+and testing on a single NVIDIA RTX 4090 GPU, further underscoring the scalability and practicality of our approach.
+
+## Contribution
+We present the code that integrates the IF-Net for extracting informative data points from the test set and provide the code incorporating feature extractor backbones more suitable for edge device deployment, namely:
+- Phinet
+- Mobilinet_v3
+## Team Members
+- Sebastian Cavada
+- Branislava Jankovic
+- Kamila Zhumakhanova
+
+## Dataset 
+We chose the 224*224 version of the ORBIT dataset. Please, follow the guidelines of the [official ORBIT githib page](https://github.com/microsoft/ORBIT-Dataset?tab=readme-ov-file#download-orbit-benchmark-dataset) to download the dataset along with the [annotations](https://github.com/microsoft/ORBIT-Dataset?tab=readme-ov-file#download-orbit-benchmark-dataset). Check that the folder includes train, validation, test sets of video frame images and their annotations, following the format:
+
+
+
 ```
-conda create -n orbit python=3.8
+/ORBIT_microsoft
+|
+|--- train/
+      |--- P100/
+      |--- exercise bench/
+      |------------clean/
+      |---------------P100--exercise-bench--clean--4ChvjQ3Xzidvq0mCI9lperemxb6D6tCyQS-BG6LS72A/
+      |------------------ P100--exercise-bench--clean--4ChvjQ3Xzidvq0mCI9lperemxb6D6tCyQS-BG6LS72A-00001.jpg
+      |------------------ P100--exercise-bench--clean--4ChvjQ3Xzidvq0mCI9lperemxb6D6tCyQS-BG6LS72A-00002.jpg
+      ...
+      
+|--- validation/
+|--- test/
+|--- annotation/ 
+      |------ orbit_extra_annotations/
+      |------ orbit_train_object_cluster_labels.json
+      |------ orbit_validation_object_cluster_labels.json
+      |------ orbit_test_object_cluster_labels.json
 ```
 
-run pip install
+Change the data root path, `data.train_cfg.root = your_orbit_dataset_folder_path`, `data.val_cfg.root = your_orbit_dataset_folder_path` and
+`data.test_cfg.root = your_orbit_dataset_folder_path`. [See example here](https://github.com/Sebo-the-tramp/orbit-challenge-2024/blob/main/pytorchlightning_trainer/conf/data/default_use_data_aug.yaml#L8)
+## Installation
+
+Git clone the repository
+
 ```
+git clone https://github.com/Sebo-the-tramp/orbit-challenge-2024.git
+cd orbit-challenge-2024
+```
+
+Create conda enviromnent 
+
+```
+conda create -n flash python=3.8
+conda activate flash
 pip install -r requirements.txt
 ```
-
-error with SLURM:
-ADD these variables to .bashrc or just run in the command line
+If you face issues with installation of torchvision, run this:
 ```
-# Variables
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+```
+Add these variables to .bashrc or just run in the command line
+```
 export PROJECT_ROOT=./
 export PYTHONPATH=./
 export HYDRA_FULL_ERROR=1
 export SLURM_NTASKS=1
 ```
-
-ERROR WITH torch :(
+## To run the training
+- In `pytorchlightning/conf/data/default_use_data_aug.yaml` change the root to the path to your dataset and number of episodes per user (we used 50 for faster training)
+- In `pytorchlightning/conf/model/feat_with_lite.yaml` change the path to the feature extractor pretrained weights and the model name
+- Start the training by running:
 ```
-NVIDIA GeForce RTX 4090 with CUDA capability sm_89 is not compatible with the current PyTorch installation.
-
-The current PyTorch install supports CUDA capabilities sm_37 sm_50 sm_60 sm_70.
-
-If you want to use the NVIDIA GeForce RTX 4090 GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+python run.py 
+data=default_use_data_aug     
+model=feat_with_lite
+train=with_lite_train 
+train.exp_name="phinet_50__whole dataset"
 ```
-
--> solved with installing this:
-
-```
-pip install torch==1.10.1+cu111 torchvision==0.11.2+cu111 torchaudio==0.10.1 -f https://download.pytorch.org/whl/cu111/torch_stable.html
-```
-
-also but a bit more risky:
+- or simply run 
 
 ```
-pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+sh start_train.sh
 ```
-
-
-download files with descriptions:
+## To run the testing
+- In `pytorchlightning/conf/data/test_support_sampler_uniform_fixed_chunk_size_10.yaml` change the root to the path to your dataset and number of episodes per user (we used 50 for faster training)
+- In `pytorchlightning/conf/model/feat_with_lite_video_post_improved.yaml` change the path to the feature extractor pretrained weights and the model name
+- In `pytorchlightning/conf/train/with_lite_test.yaml` change the path to the last checkpoint of the trained model
+- Start the testing by running:
+```
+python run.py
+data=test_support_sampler_uniform_fixed_chunk_size_10 
+model=feat_with_lite_video_post_improved
+train=with_lite_test 
+train.exp_name="reproduce_our_results"
+```
+or simply run 
 
 ```
-./get_annotations/sh
-```
-
-Then you need to install for training a pretrained model of efficientnet (because this library does not use timm YET)
-
-```
-wget https://github.com/lukemelas/EfficientNet-PyTorch/releases/download/1.0/efficientnet-b0-355c32eb.pth
-```
-
-I'll keep the weights for phinet and mobilevit in this repository under pretrained folder
-
-and put it in the correct folder 
-
-Very useful:
-- https://arxiv.org/pdf/2301.12246.pdf
-- https://arxiv.org/pdf/2303.09417.pdf
-
-Optimizing GPU:
-- https://dl.acm.org/doi/pdf/10.1145/3570638
+sh start_test.sh
