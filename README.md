@@ -134,3 +134,33 @@ Then modify the `src_base` to the path of the original dataset and `target_base`
 ```
 python dataset/copy_db.py /path/to/your_new_dataset.txt
 ```
+
+## Running the IF-network training and testing
+
+In order to run the IF-network, a change of branch is needed. Please go to the 'solo' branch by using the command:
+
+```bash
+git checkout solo
+```
+
+Then install the library locally:
+
+```bash
+cd micromind
+pip install micromind -e .
+```
+(remember the dot at the end)
+
+In this branch a /micromind folder will be present at the root of the project. CD into the following:
+
+```bash
+cd micromind/recipes/image_classification
+```
+
+from there the single command needed to start the training process is the following:
+
+```bash
+python train.py cfg/phinet.py
+```
+
+From there on the training for 2 epochs will start and right after the testing. At the end of the testing the output of the network will be .TXT file containing all the paths of the images considered informative.
